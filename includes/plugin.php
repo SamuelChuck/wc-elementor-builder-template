@@ -220,7 +220,6 @@ class Plugin
         if (is_admin()) {
             require_once(WEBT_CORE_PATH . 'admin/admin-init.php');
         }
-        require_once(WEBT_CORE_PATH . 'frontend/classes/class-wc-cart.php');
         require(WEBT_CORE_PATH . '/common/main.php');
         require_once(WEBT_CORE_PATH . 'app/app.php');
     }
