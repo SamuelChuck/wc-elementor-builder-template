@@ -1,0 +1,83 @@
+.notice.webt-notice {
+    border-left-color: #9b0a46 !important;
+    padding: 20px;
+}
+
+.rtl .notice.webt-notice {
+    border-right-color: #9b0a46 !important;
+}
+
+.notice.webt-notice .webt-notice-inner {
+    display: table;
+    width: 100%;
+}
+
+.notice.webt-notice .webt-notice-inner .webt-notice-icon,
+.notice.webt-notice .webt-notice-inner .webt-notice-content,
+.notice.webt-notice .webt-notice-inner .webt-install {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.notice.webt-notice .webt-notice-icon {
+    color: #9b0a46;
+    font-size: 50px;
+    width: 50px;
+}
+
+.notice.webt-notice .webt-notice-content {
+    padding: 0 20px;
+}
+
+.notice.webt-notice p {
+    padding: 0;
+    margin: 0;
+}
+
+.notice.webt-notice h3 {
+    margin: 0 0 5px;
+}
+
+.notice.webt-notice .webt-install {
+    text-align: center;
+}
+
+.notice.webt-notice .webt-install.webt-install-button {
+    padding: 5px 30px;
+    height: auto;
+    line-height: 20px;
+    text-transform: capitalize;
+}
+
+.notice.webt-notice .webt-install.webt-install-button i {
+    padding-right: 5px;
+}
+
+.rtl .notice.webt-notice .webt-install.webt-install-button i {
+    padding-right: 0;
+    padding-left: 5px;
+}
+
+.notice.webt-notice .webt-install.webt-install-button:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 767px) {
+    .notice.webt-notice {
+        padding: 10px;
+    }
+
+    .notice.webt-notice .webt-notice-inner {
+        display: block;
+    }
+
+    .notice.webt-notice .webt-notice-inner .webt-notice-content {
+        display: block;
+        padding: 0;
+    }
+
+    .notice.webt-notice .webt-notice-inner .webt-notice-icon,
+    .notice.webt-notice .webt-notice-inner .webt-install {
+        display: none;
+    }
+}

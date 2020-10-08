@@ -1,0 +1,541 @@
+<?php
+
+namespace WEBT;
+
+use Elementor\Widget_Base;
+use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Typography;
+use WEBT\Plugin;
+
+/**
+ * WooCommerce Elementor Builder Widget.
+ *
+ * @package webt
+ */
+if (!defined('ABSPATH')) {
+	exit; // Exit if accessed directly.
+}
+
+class Widget_Order_Customer_Details_Widget extends Widget_Base
+{
+
+	/**
+	 * Get widget name.
+	 */
+	public function get_name()
+	{
+		return 'webt-order-customer-details';
+	}
+
+	/**
+	 * Get widget title.
+	 */
+	public function get_title()
+	{
+		return esc_html__('Order Customer Details', 'woocommerce');
+	}
+
+	/**
+	 * Get widget icon.
+	 */
+	public function get_icon()
+	{
+		return 'eicon-woocommerce';
+	}
+
+	/**
+	 * Get widget categories.
+	 */
+	public function get_categories()
+	{
+		return ['webt-checkout'];
+	}
+
+	/**
+	 * Register oEmbed widget controls.
+	 */
+	protected function _register_controls()
+	{
+
+		/* --------------------------------- Section -------------------------------- */
+		$this->start_controls_section(
+			'section_style',
+			array(
+				'label' => esc_html__('Section', 'elementor'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_responsive_control(
+			'section_display',
+			[
+				'label' => __('Display', 'webt'),
+				'type' => Controls_Manager::SWITCHER,
+				'label_on' => __('Flex', 'webt'),
+				'label_off' => __('Block', 'webt'),
+				'return_value' => 'flex',
+				'default' => 'flex',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'section_border',
+				'selector' => $this->address_selectors(),
+				'exclude' => ['color'],
+				'condition' => [
+					'section_display' => 'flex',
+				],
+			]
+		);
+		$this->add_control(
+			'section_border_color',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					$this->address_selectors() => 'border-color: {{VALUE}}',
+				],
+				'condition'     => [
+					'section_display' => 'flex',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'section_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					$this->address_selectors() => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'section_display' => 'flex',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'section_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					$this->address_selectors() => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'section_display' => 'flex',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+		/* --------------------------------- Column -------------------------------- */
+		$this->start_controls_section(
+			'column_style',
+			array(
+				'label' => esc_html__('Column', 'elementor'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'column_border',
+				'selector' => $this->address_selectors(),
+				'exclude' => ['color'],
+			]
+		);
+		$this->add_control(
+			'column_border_color',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					$this->address_selectors() => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'column_border_radius',
+			[
+				'label' => esc_html__('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					$this->address_selectors() => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'column_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					$this->address_selectors() => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'column_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					$this->address_selectors() => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'column_space_between',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'allowed_dimensions' => ['top', 'left'],
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column.col-2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'column_width',
+			[
+				'label' => __('Width', 'webt'),
+				'type' =>  Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'devices' => ['desktop', 'tablet', 'mobile'],
+				'desktop_default' => [
+					'size' => 40,
+					'unit' => '%',
+				],
+				'tablet_default' => [
+					'size' => 48,
+					'unit' => '%',
+				],
+				'mobile_default' => [
+					'size' => 100,
+					'unit' => '%',
+				],
+
+				'selectors' => [
+					$this->address_selectors() => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+		/* --------------------------------- Heading -------------------------------- */
+		$this->start_controls_section(
+			'heading_style',
+			array(
+				'label' => esc_html__('Heading', 'elementor'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'heading_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .woocommerce-customer-details .woocommerce-column__title',
+			)
+		);
+		$this->add_control(
+			'heading_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-column__title' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'heading_align',
+			[
+				'label'        => esc_html__('Alignment', 'elementor'),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => [
+					'left'   => [
+						'title' => esc_html__('Left', 'elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'prefix_class' => '',
+				'default'      => '',
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-column__title' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		/* --------------------------------- Address -------------------------------- */
+		$this->start_controls_section(
+			'address_style_section',
+			array(
+				'label' => esc_html__('Address', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'address_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .woocommerce-customer-details address',
+			)
+		);
+		$this->add_control(
+			'address_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'address_align',
+			[
+				'label'        => esc_html__('Alignment', 'elementor'),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => [
+					'left'   => [
+						'title' => esc_html__('Left', 'elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'prefix_class' => '',
+				'default'      => '',
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'address_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		/* ---------------------------------- Phone --------------------------------- */
+		$this->start_controls_section(
+			'address_phone_style_section',
+			array(
+				'label' => esc_html__('Address Phone', 'skeletor'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'address_phone_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--phone',
+			)
+		);
+		$this->add_control(
+			'address_phone_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--phone' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'address_phone_align',
+			[
+				'label'        => esc_html__('Alignment', 'elementor'),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => [
+					'left'   => [
+						'title' => esc_html__('Left', 'elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'prefix_class' => '',
+				'default'      => '',
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--phone' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'address_phone_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--phone' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+
+		/* ---------------------------------- Email --------------------------------- */
+		$this->start_controls_section(
+			'address_email_style_section',
+			array(
+				'label' => esc_html__('Address Email', 'skeletor'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'address_email_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--email',
+			)
+		);
+		$this->add_control(
+			'address_email_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--email' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'address_email_align',
+			[
+				'label'        => esc_html__('Alignment', 'elementor'),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => [
+					'left'   => [
+						'title' => esc_html__('Left', 'elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'prefix_class' => '',
+				'default'      => '',
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--email' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'address_email_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details address .woocommerce-customer-details--email' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+	}
+
+	/**
+	 * Render widget output on the frontend.
+	 */
+	protected function render()
+	{
+		$settings = $this->get_settings_for_display();
+		if ($settings['section_display'] === 'flex') {
+			$inline_css = '@media (min-width: 650px){section.woocommerce-columns {display: flex;}}';
+		} else {
+			$inline_css = 'section.woocommerce-columns {display: block;}';
+		}
+		global $Get;
+		$order_id = $Get->last_order_id();
+		$order = wc_get_order($order_id);
+
+		$show_customer_details = current_user_can('administrator') || (is_user_logged_in() && $order->get_user_id() === get_current_user_id());
+
+		if ($show_customer_details) {
+?>
+			<style>
+				<?php echo $inline_css; ?>
+			</style>
+<?php
+			wc_get_template('order/order-details-customer.php', array('order' => $order));
+		}
+	}
+
+	/**
+	 * address_selectors
+	 *
+	 * @return string
+	 */
+	private function address_selectors()
+	{
+		$show_shipping = !wc_ship_to_billing_address_only();
+
+		if ($show_shipping) {
+			$address_selectors = '{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column';
+		} else {
+			$address_selectors = '{{WRAPPER}} .woocommerce-customer-details';
+		}
+		return $address_selectors;
+	}
+}
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Order_Customer_Details_Widget());

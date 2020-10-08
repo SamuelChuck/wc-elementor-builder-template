@@ -1,0 +1,28 @@
+#woocomerce-builder-options__form select {
+    min-height: 40px !important;
+    width: 400px;
+    margin: 0;
+    padding: 6px;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+#woocomerce-builder-options__form p.description {
+/*    display: none;
+*/}
+
+button#woocomerce-builder-elementor-options__form__submit {
+    display: initial;
+    width: 200px;
+    height: 40px;
+    padding: inherit;
+    margin-top: 20px;
+}
+
+form#posts-filter {
+    padding-top: 30px;
+}
+
+ul.subsubsub {
+    margin-top: 25px;
+}
