@@ -58,6 +58,9 @@ class Widget_Order_Received_Widget extends Widget_Base
 	 */
 	protected function _register_controls()
 	{
+
+		/* ----------------------------- Order Received ----------------------------- */
+
 		$this->start_controls_section(
 			'order_received_section',
 			[
@@ -221,6 +224,220 @@ class Widget_Order_Received_Widget extends Widget_Base
 			]
 		);
 		$this->end_controls_section();
+
+		/* ----------------------------- Order Failed ----------------------------- */
+		$this->start_controls_section(
+			'order_failed_section',
+			[
+				'label' => esc_html__('Order Failed', 'webt'),
+				'tab' => Controls_Manager::TAB_CONTENT,
+			]
+		);
+		$this->add_control(
+			'order_failed_text',
+			[
+				'label'     => esc_html__('Order Failed Text', 'webt'),
+				'type'      => Controls_Manager::TEXTAREA,
+				'default' => esc_html__('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'webt'),
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'order_failed_text_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .woocommerce-thankyou-order-received',
+			)
+		);
+		$this->add_control(
+			'order_failed_text_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-thankyou-order-received' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_failed_text_align',
+			[
+				'label'        => esc_html__('Alignment', 'elementor'),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => [
+					'left'   => [
+						'title' => esc_html__('Left', 'elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'      => '',
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-thankyou-order-received' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		// order_failed style
+		$this->start_controls_section(
+			'order_failed_overview_style',
+			array(
+				'label' => esc_html__('Label', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'order_failed_overview_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} ul.order_details li',
+			)
+		);
+		$this->add_control(
+			'order_failed_overview_color',
+			[
+				'label' => esc_html__('Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} ul.order_details li' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_failed_overview_align',
+			[
+				'label'        => esc_html__('Alignment', 'elementor'),
+				'type'         => Controls_Manager::CHOOSE,
+				'options'      => [
+					'left'   => [
+						'title' => esc_html__('Left', 'elementor'),
+						'icon'  => 'fa fa-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'elementor'),
+						'icon'  => 'fa fa-align-center',
+					],
+					'right'  => [
+						'title' => esc_html__('Right', 'elementor'),
+						'icon'  => 'fa fa-align-right',
+					],
+				],
+				'default'      => '',
+				'selectors' => [
+					'{{WRAPPER}} ul.order_details li' => 'text-align: {{VALUE}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		/* ------------------------------ Button Style ------------------------------ */
+		$this->start_controls_section(
+			'order_failed_button_style',
+			array(
+				'label' => esc_html__('Button', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'order_failed_button_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} a.button.woocommerce-button.pay',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'order_failed_button_border',
+				'selector' => '{{WRAPPER}} a.button.woocommerce-button.pay',
+				'exclude' => ['color'],
+			]
+		);
+		$this->add_control(
+			'order_failed_button_border_radius',
+			[
+				'label' => __('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_failed_button_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_failed_button_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'order_failed_button_text_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'order_failed_button_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'order_failed_button_border_color',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} a.button.woocommerce-button.pay ' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'order_failed_button_box_shadow',
+				'selector' => '{{WRAPPER}} a.button.woocommerce-button.pay',
+			]
+		);
+		$this->end_controls_section();
 	}
 
 	/**
@@ -228,39 +445,48 @@ class Widget_Order_Received_Widget extends Widget_Base
 	 */
 	protected function render()
 	{
-
 		$settings = $this->get_settings_for_display();
-		$order_received_text = $settings['order_received_text'];
-		global $Get;
-		$order_received = $Get->order_id();
-		$order = wc_get_order($order_received);
-?>
+		global $wp;
+		$orders = get_option('woocommerce_myaccount_orders_endpoint');
+		$view_order = get_option('woocommerce_myaccount_view_order_endpoint');
+		$order_received = get_option('woocommerce_checkout_order_received_endpoint');
 
+		if (isset($wp->query_vars[$orders])) {
+			$order_id = $wp->query_vars[$orders];
+		} elseif (isset($wp->query_vars[$view_order])) {
+			$order_id = $wp->query_vars[$view_order];
+		} elseif (isset($wp->query_vars[$order_received])) {
+			$order_id = $wp->query_vars[$order_received];
+		}  elseif( webt_is_preview_mode()!==false || !webt_is_edit_mode()!==false ) {
+			$order_id = webt_last_order_id();
+		}
+		$order = wc_get_order($order_id);
+?>
 		<?php if ($order) :
 
 			do_action('woocommerce_before_thankyou', $order->get_id()); ?>
 
 			<?php if ($order->has_status('failed')) : ?>
 
-				<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed"><?php esc_html_e('Unfortunately your order cannot be processed as the originating bank/merchant has declined your transaction. Please attempt your purchase again.', 'woocommerce'); ?></p>
+			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed"><?php esc_html_e($settings['order_failed_text'], 'woocommerce'); ?></p>
 
-				<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
-					<a href="<?php echo esc_url($order->get_checkout_payment_url()); ?>" class="button pay"><?php esc_html_e('Pay', 'woocommerce'); ?></a>
-					<?php if (is_user_logged_in()) : ?>
-						<a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" class="button pay"><?php esc_html_e('My account', 'woocommerce'); ?></a>
-					<?php endif; ?>
-				</p>
+			<p class="woocommerce-notice woocommerce-notice--error woocommerce-thankyou-order-failed-actions">
+				<a href="<?php echo esc_url($order->get_checkout_payment_url()); ?>" class="button woocommerce-button pay"><?php esc_html_e('Pay', 'woocommerce'); ?></a>
+				<?php if (is_user_logged_in()) : ?>
+					<a href="<?php echo esc_url(wc_get_page_permalink('myaccount')); ?>" class="button woocommerce-button pay"><?php esc_html_e('My account', 'woocommerce'); ?></a>
+				<?php endif; ?>
+			</p>
 
 			<?php else : ?>
 
-				<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Thank you. Your order has been received.', 'woocommerce'), $order); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+				<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received"><?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__($settings['order_received_text'], 'woocommerce'), $order); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 																												?></p>
 
 				<ul class="woocommerce-order-overview woocommerce-thankyou-order-details order_details">
 
 					<li class="woocommerce-order-overview__order order">
 						<?php esc_html_e('Order number:', 'woocommerce'); ?>
-						<strong><?php echo $order->get_order_number(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+						<strong><?php echo $order->get_order_number(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped  
 								?></strong>
 					</li>
 
@@ -297,11 +523,10 @@ class Widget_Order_Received_Widget extends Widget_Base
 		<?php else : ?>
 
 			<p class="woocommerce-notice woocommerce-notice--success woocommerce-thankyou-order-received">
-				<?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__('Thank you. Your order has been received.', 'woocommerce'), null); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+				<?php echo apply_filters('woocommerce_thankyou_order_received_text', esc_html__($settings['order_received_text'], 'woocommerce'), null); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
 				?></p>
 
 		<?php endif; ?>
-
 <?php
 	}
 }

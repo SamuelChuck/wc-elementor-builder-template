@@ -1077,11 +1077,13 @@ class Widget_MyAccount_Register_Form_Widget extends Widget_Base
                     if ($settings['show_action_form_end'] === 'yes') {
                         do_action('woocommerce_register_form_end');
                     }
-
                     ?>
                 </form>
             </div>
-<?php }
+<?php
+        } elseif((new Get)->is_edit_mode() || (new Get)->is_preview_mode()) {
+            echo '<p> Please enable my account registration </p>';
+        }
     }
 }
 Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Register_Form_Widget());

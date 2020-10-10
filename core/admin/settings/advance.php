@@ -57,7 +57,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_myaccount_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_myaccount_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_myaccount_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -90,7 +90,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($cart_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('cart', $cart_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($cart_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -124,7 +124,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($cart_empty_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('cart', $cart_empty_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($cart_empty_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -157,7 +157,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($checkout_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('checkout', $checkout_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($checkout_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -200,7 +200,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_account_orders_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('orders', $webt_account_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_account_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -233,7 +233,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_account_no_orders_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('orders', $webt_account_no_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_account_no_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -266,7 +266,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_account_view_order_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('orders', $webt_account_view_order_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_account_view_order_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -299,7 +299,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_account_downloads_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('downloads', $webt_account_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_account_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -332,7 +332,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_account_no_downloads_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('downloads', $webt_account_no_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_account_no_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -374,7 +374,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_order_pay_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('checkout', $webt_order_pay_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_order_pay_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -407,7 +407,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_order_received_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('checkout', $webt_order_received_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_order_received_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 								</p>
@@ -441,7 +441,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_add_payment_method_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('payment-method', $webt_add_payment_method_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_add_payment_method_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -474,7 +474,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_checkout_login_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('checkout', $webt_checkout_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_checkout_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -516,7 +516,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_edit_account_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_edit_account_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_edit_account_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -549,7 +549,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_addresses_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_addresses_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_addresses_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -582,7 +582,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_payment_methods_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('payment-method', $webt_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -615,7 +615,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_no_payment_methods_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('payment-method', $webt_no_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_no_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -648,7 +648,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_myaccount_login_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_myaccount_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_myaccount_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -681,7 +681,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_myaccount_register_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_myaccount_register_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_myaccount_register_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -714,7 +714,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_lost_password_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_lost_password_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_lost_password_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -747,7 +747,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_lost_password_reset_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_lost_password_reset_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_lost_password_reset_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>
@@ -780,7 +780,7 @@ if (!defined('ABSPATH')) {
 								<p class="description">
 									<?php
 									if (!empty($webt_lost_password_confirmation_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url('my-account', $webt_lost_password_confirmation_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<a href="' . esc_url($this->get_edit_url($webt_lost_password_confirmation_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
 									} ?>
 								</p>
 							</td>

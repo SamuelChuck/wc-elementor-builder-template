@@ -623,9 +623,22 @@ class Widget_Order_Details_Widget extends Widget_Base
 	 */
 	protected function render()
 	{
-		global $Get;
-		$order_id = $Get->order_id();
+		global $wp;
+		$order_id = '';
+		$orders = get_option('woocommerce_myaccount_orders_endpoint');
+		$view_order = get_option('woocommerce_myaccount_view_order_endpoint');
+		$order_received = get_option('woocommerce_checkout_order_received_endpoint');
 
+		if (isset($wp->query_vars[$orders])) {
+			$order_id = $wp->query_vars[$orders];
+		} elseif (isset($wp->query_vars[$view_order])) {
+			$order_id = $wp->query_vars[$view_order];
+		} elseif (isset($wp->query_vars[$order_received])) {
+			$order_id = $wp->query_vars[$order_received];
+		} elseif( webt_is_preview_mode()!==false || !webt_is_edit_mode()!==false ) {
+			$order_id = webt_last_order_id();
+		}
+		
 		if (!$order_id) {
 			return;
 		}
