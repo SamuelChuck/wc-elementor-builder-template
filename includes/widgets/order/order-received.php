@@ -445,8 +445,9 @@ class Widget_Order_Received_Widget extends Widget_Base
 	 */
 	protected function render()
 	{
-		$settings = $this->get_settings_for_display();
 		global $wp;
+		$order_id = '';
+		$settings = $this->get_settings_for_display();
 		$orders = get_option('woocommerce_myaccount_orders_endpoint');
 		$view_order = get_option('woocommerce_myaccount_view_order_endpoint');
 		$order_received = get_option('woocommerce_checkout_order_received_endpoint');

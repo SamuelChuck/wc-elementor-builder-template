@@ -3,22 +3,6 @@
 use WEBT\TemplateLibrary\Source_Local;
 
 /**
- * last_order_id
- *
- * @return void
- */
-function webt_last_order_id()
-{
-	global $wpdb;
-	$statuses = array_keys(wc_get_order_statuses());
-	$statuses = implode("','", $statuses);
-
-	// Getting last Order ID (max value)
-	$results = $wpdb->get_col(" SELECT MAX(ID) FROM {$wpdb->prefix}posts WHERE post_type LIKE 'shop_order' AND post_status IN ('$statuses') ");
-	return reset($results);
-}
-
-/**
  * returns true if is edit mode or wp defult edit mode
  * is_edit_mode
  *
@@ -93,4 +77,20 @@ function webt_order_id($order_id = '')
 		$order_id = webt_last_order_id();
 	}
 	return $order_id;
+}
+
+/**
+ * last_order_id
+ *
+ * @return void
+ */
+function webt_last_order_id()
+{
+	global $wpdb;
+	$statuses = array_keys(wc_get_order_statuses());
+	$statuses = implode("','", $statuses);
+
+	// Getting last Order ID (max value)
+	$results = $wpdb->get_col(" SELECT MAX(ID) FROM {$wpdb->prefix}posts WHERE post_type LIKE 'shop_order' AND post_status IN ('$statuses') ");
+	return reset($results);
 }

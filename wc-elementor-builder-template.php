@@ -4,7 +4,7 @@
  * Plugin Name:       WooCommerce Elementor Builder Template
  * Plugin URI:        https://muel.ml/
  * Description:       Effortlessly layout & design your WooCommerce Pages endpoints and more, bring your Woocommerce Elementor store closer to perfection
- * Version:           1.0.5
+ * Version:           0.0.1
  * Author:            SamuelChuck
  * Author URI:        https://muel.ml/
  * License:           License GNU General Public License version 2 or later
