@@ -56,6 +56,14 @@ class Widget_Shipping_Form_Widget extends Widget_Base
 	}
 
 	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'checkout', 'shipping', 'address', 'form'];
+	}
+
+	/**
 	 * Register oEmbed widget controls.
 	 */
 	protected function _register_controls()

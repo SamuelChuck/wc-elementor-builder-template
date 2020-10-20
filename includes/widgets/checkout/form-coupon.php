@@ -55,6 +55,14 @@ class Widget_Checkout_Coupon_Form_Widget extends Widget_Base
         return ['webt-checkout'];
     }
 
+	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'checkout', 'coupon', 'form'];
+	}
+
     /**
      * Register oEmbed widget controls.
      */

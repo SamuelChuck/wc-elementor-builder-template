@@ -52,6 +52,13 @@ class Widget_Taxonomy_Listing_Widget extends Widget_Base
     }
 
     /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'shop', 'store', 'list', 'taxonomy', 'global'];
+    }
+    /**
      * Register oEmbed widget controls.
      */
     protected function _register_controls()

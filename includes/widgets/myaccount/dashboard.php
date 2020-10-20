@@ -53,6 +53,14 @@ class Widget_MyAccount_Dashboard_Widget extends ElementorWidget_Base
 		return ['webt-myaccount'];
 	}
 
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'myaccount', 'dashboard'];
+	}
+	
 	/**
 	 * Register oEmbed widget controls.
 	 */

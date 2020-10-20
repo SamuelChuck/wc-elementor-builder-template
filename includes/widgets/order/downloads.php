@@ -52,6 +52,14 @@ class Widget_MyAccount_Downloads_Widget extends Widget_Base
 	{
 		return ['webt-myaccount'];
 	}
+	
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'download', 'myaccount'];
+    }
 
 	/**
 	 * Register oEmbed widget controls.

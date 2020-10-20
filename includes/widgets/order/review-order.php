@@ -54,6 +54,13 @@ class Widget_Review_Order_Widget extends Widget_Base
     }
 
     /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'orders', 'checkout', 'cart', 'review', 'myaccount'];
+    }
+    /**
      * Register oEmbed widget controls.
      */
     protected function _register_controls()

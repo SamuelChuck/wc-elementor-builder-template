@@ -56,6 +56,13 @@ class Widget_MyAccount_Register_Form_Widget extends Widget_Base
     }
 
     /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'myaccount', 'register', 'signup', 'form'];
+    }
+    /**
      * Register oEmbed widget controls.
      */
     protected function _register_controls()
@@ -1081,7 +1088,7 @@ class Widget_MyAccount_Register_Form_Widget extends Widget_Base
                 </form>
             </div>
 <?php
-        } elseif((new Get)->is_edit_mode() || (new Get)->is_preview_mode()) {
+        } elseif (webt_is_edit_mode() || webt_is_preview_mode()) {
             echo '<p> Please enable my account registration </p>';
         }
     }

@@ -53,6 +53,14 @@ class Widget_Cart_Table_Widget extends Widget_Base
         return ['webt-cart'];
     }
 
+	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'cart', 'table'];
+	}
+
     /**
      * Register oEmbed widget controls.
      */

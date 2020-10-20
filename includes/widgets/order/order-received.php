@@ -34,7 +34,7 @@ class Widget_Order_Received_Widget extends Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('Order-received', 'webt');
+		return esc_html__('Order received', 'webt');
 	}
 
 	/**
@@ -53,6 +53,14 @@ class Widget_Order_Received_Widget extends Widget_Base
 		return ['webt-checkout'];
 	}
 
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'order', 'received', 'checkout', 'thank you'];
+	}
+	
 	/**
 	 * Register oEmbed widget controls.
 	 */

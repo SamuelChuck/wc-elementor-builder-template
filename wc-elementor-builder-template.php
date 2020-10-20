@@ -46,7 +46,6 @@ add_action( 'plugins_loaded', 'webt_load_plugin_textdomain' );
 
 require( WEBT_INCLUDES_PATH.'plugin.php');
 
-
 /**
  * Load WEBT textdomain.
  *

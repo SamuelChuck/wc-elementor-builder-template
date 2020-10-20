@@ -69,6 +69,9 @@ if (!class_exists('Widgets_Registered')) {
                 require_once(dirname(__FILE__) . '/global/custom-hook.php');
                 require_once(dirname(__FILE__) . '/global/print-notices.php');
                 require_once(dirname(__FILE__) . '/global/taxonomy-listing.php');
+
+                /*Single Product*/
+                require_once(dirname(__FILE__) . '/single-product/price.php');
             }
         }
 
@@ -133,6 +136,14 @@ if (!class_exists('Widgets_Registered')) {
                 'webt-global',
                 [
                     'title' => esc_html__('WC Global', 'webt'),
+                    'icon' => 'eicon-woocommerce',
+                ]
+            );
+
+            $widget_categories->add_category(
+                'webt-single-product',
+                [
+                    'title' => esc_html__('WC Single Product', 'webt'),
                     'icon' => 'eicon-woocommerce',
                 ]
             );

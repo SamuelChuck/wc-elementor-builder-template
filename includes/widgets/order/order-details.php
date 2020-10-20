@@ -52,6 +52,14 @@ class Widget_Order_Details_Widget extends Widget_Base
 	{
 		return ['webt-checkout'];
 	}
+	
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'order details', 'orders', 'myaccount'];
+    }
 
 	/**
 	 * Register oEmbed widget controls.

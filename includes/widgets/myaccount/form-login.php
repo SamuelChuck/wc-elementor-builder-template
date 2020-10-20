@@ -56,6 +56,13 @@ class Widget_MyAccount_Form_Login_Widget extends Widget_Base
 	}
 
 	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'myaccount', 'login', 'form'];
+	}
+	/**
 	 * Register oEmbed widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.
