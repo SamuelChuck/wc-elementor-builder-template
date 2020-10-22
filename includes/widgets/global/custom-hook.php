@@ -55,7 +55,7 @@ class Widget_Customhook_Widget extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['webt', 'woocommerce', 'custom', 'hook'];
+		return ['webt', 'woocommerce', 'custom', 'hook', 'global'];
 	}
 	/**
 	 * Register oEmbed widget controls.
