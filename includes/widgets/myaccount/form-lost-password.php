@@ -56,6 +56,14 @@ class Widget_MyAccount_Form_Lost_Password_Widget extends Widget_Base
 	}
 
 	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'myaccount', 'lost', 'password', 'form'];
+	}
+
+	/**
 	 * Register oEmbed widget controls.
 	 *
 	 * Adds different input fields to allow the user to change and customize the widget settings.

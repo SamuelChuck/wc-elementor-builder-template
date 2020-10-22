@@ -52,6 +52,14 @@ class Widget_MyAccount_Downloads_Widget extends Widget_Base
 	{
 		return ['webt-myaccount'];
 	}
+	
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'download', 'myaccount'];
+    }
 
 	/**
 	 * Register oEmbed widget controls.
@@ -724,8 +732,7 @@ class Widget_MyAccount_Downloads_Widget extends Widget_Base
 	protected function render()
 	{
 		$settings = $this->get_settings_for_display();
-		global $Get;
-		$order_id = $Get->order_id();
+		$order_id = webt_order_id();
 		$order = wc_get_order($order_id); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
 		$downloads             = $order->get_downloadable_items();

@@ -53,6 +53,14 @@ class Widget_Payment_Form_Widget extends Widget_Base
         return ['webt-checkout'];
     }
 
+	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'checkout', 'pay', 'payment', 'form'];
+	}
+
     /**
      * Register oEmbed widget controls.
      */

@@ -51,6 +51,14 @@ class Widget_MyAccount_Payment_Methods_Widget extends Widget_Base
 	}
 
 	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'myaccount', 'checkout', 'payment-method'];
+	}
+
+	/**
 	 * Register oEmbed widget controls.
 	 */
 	protected function _register_controls()
@@ -65,4 +73,4 @@ class Widget_MyAccount_Payment_Methods_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Payment_Methods_Widget());
+//Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Payment_Methods_Widget());

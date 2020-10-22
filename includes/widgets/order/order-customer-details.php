@@ -52,6 +52,14 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 		return ['webt-checkout'];
 	}
 
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'customer', 'order', 'details', 'myaccount'];
+    }
+
 	/**
 	 * Register oEmbed widget controls.
 	 */
@@ -76,59 +84,6 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 				'label_off' => __('Block', 'webt'),
 				'return_value' => 'flex',
 				'default' => 'flex',
-			]
-		);
-
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'section_border',
-				'selector' => $this->address_selectors(),
-				'exclude' => ['color'],
-				'condition' => [
-					'section_display' => 'flex',
-				],
-			]
-		);
-		$this->add_control(
-			'section_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					$this->address_selectors() => 'border-color: {{VALUE}}',
-				],
-				'condition'     => [
-					'section_display' => 'flex',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'section_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					$this->address_selectors() => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'section_display' => 'flex',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'section_margin',
-			[
-				'label' => esc_html__('Margin', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					$this->address_selectors() => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'condition' => [
-					'section_display' => 'flex',
-				],
 			]
 		);
 
@@ -505,8 +460,20 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 		} else {
 			$inline_css = 'section.woocommerce-columns {display: block;}';
 		}
-		global $Get;
-		$order_id = $Get->last_order_id();
+		global $wp;
+		$orders = get_option('woocommerce_myaccount_orders_endpoint');
+		$view_order = get_option('woocommerce_myaccount_view_order_endpoint');
+		$order_received = get_option('woocommerce_checkout_order_received_endpoint');
+
+		if (isset($wp->query_vars[$orders])) {
+			$order_id = $wp->query_vars[$orders];
+		} elseif (isset($wp->query_vars[$view_order])) {
+			$order_id = $wp->query_vars[$view_order];
+		} elseif (isset($wp->query_vars[$order_received])) {
+			$order_id = $wp->query_vars[$order_received];
+		} else {
+			$order_id = webt_last_order_id();
+		}
 		$order = wc_get_order($order_id);
 
 		$show_customer_details = current_user_can('administrator') || (is_user_logged_in() && $order->get_user_id() === get_current_user_id());

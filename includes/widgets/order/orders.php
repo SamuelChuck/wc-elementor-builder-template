@@ -53,6 +53,13 @@ class Widget_MyAccounr_Orders_Widget extends Widget_Base
 		return ['webt-myaccount'];
 	}
 
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'orders', 'myaccount'];
+    }
 	/**
 	 * Register oEmbed widget controls.
 	 */

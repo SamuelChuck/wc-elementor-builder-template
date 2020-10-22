@@ -49,7 +49,7 @@ if (!class_exists('App')) {
          */
         public function __construct()
         {
-            if ((new Get)->is_edit_mode() && is_admin()) {
+            if (webt_is_edit_mode() && is_admin()) {
                 // Priority = 5, to allow the removal or addtion of wc hooks on init.
                 add_action('admin_action_elementor', [$this, 'register_wc_hooks'], 5);
             }

@@ -53,6 +53,14 @@ class Widget_WEBT_Return_To_Shop_Widget extends Widget_Base
 	}
 
 	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'cart', 'button'];
+	}
+
+	/**
 	 * Register oEmbed widget controls.
 	 */
 	protected function _register_controls()
