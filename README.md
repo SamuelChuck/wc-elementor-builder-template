@@ -21,7 +21,7 @@ These templates need to be set so that WooCommerce knows the layout to send. The
 My account page	<br>
 Cart page	<br>
 Empty cart page	<br>
-Checkout page <br>
+Checkout page<br>
 
 <h3>Woocommerce My Account Override</h3><br>
 Option to Override default WooCommerce My Account Page<br>
@@ -81,5 +81,5 @@ Contributors & Developers <br>
 “WooCommerce Elementor Builder Template” is open source software. The following people have contributed to this plugin. <br>
 
 * SamuelChuck
-# woocommerce-elementor-builder-template
+# woocommerce-elementor-builder-template 
 
