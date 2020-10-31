@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_MyAccount_Downloads_Widget extends Widget_Base
+class Widget_MyAccount_Downloads extends Widget_Base
 {
 
 	/**
@@ -735,6 +735,10 @@ class Widget_MyAccount_Downloads_Widget extends Widget_Base
 		$order_id = webt_order_id();
 		$order = wc_get_order($order_id); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
+		if (empty($order) || !$order) {
+			return;
+		}
+
 		$downloads             = $order->get_downloadable_items();
 		$show_downloads        = $order->has_downloadable_item();
 		$allow_downloads	   = $order->is_download_permitted();
@@ -757,4 +761,4 @@ class Widget_MyAccount_Downloads_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Downloads_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Downloads ());

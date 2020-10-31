@@ -178,7 +178,7 @@ class Widget_Product_Price extends Base_Widget
                 'label' => __('Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '.woocommerce {{WRAPPER}} .price ins' => 'color: {{VALUE}};',
+                    '.woocommerce {{WRAPPER}} .price ins, .woocommerce {{WRAPPER}} .price ins span.amount' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -188,16 +188,6 @@ class Widget_Product_Price extends Base_Widget
             [
                 'name' => 'sale_price_typography',
                 'selector' => '.woocommerce {{WRAPPER}} .price ins',
-            ]
-        );
-
-        $this->add_control(
-            'price_block',
-            [
-                'label' => __('Stacked', 'webt'),
-                'type' => Controls_Manager::SWITCHER,
-                'return_value' => 'yes',
-                'prefix_class' => 'webtduct-price-block-',
             ]
         );
 
@@ -215,21 +205,55 @@ class Widget_Product_Price extends Base_Widget
                     ],
                 ],
                 'selectors' => [
-                    'body:not(.rtl) {{WRAPPER}}:not(.webtduct-price-block-yes) del' => 'margin-right: {{SIZE}}{{UNIT}}',
-                    'body.rtl {{WRAPPER}}:not(.webtduct-price-block-yes) del' => 'margin-left: {{SIZE}}{{UNIT}}',
-                    '{{WRAPPER}}.webtduct-price-block-yes del' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+                    '{{WRAPPER}} p.price inc' => 'margin-right: {{SIZE}}{{UNIT}}',
                 ],
             ]
         );
+
         $this->add_control(
-            'you_save_heading',
+            'regular_price_heading',
             [
-                'label' => __('You Save', 'webt'),
+                'label' => __('Regular Price', 'webt'),
                 'type' => Controls_Manager::HEADING,
                 'separator' => 'before',
             ]
         );
 
+        $this->add_control(
+            'regular_price_color',
+            [
+                'label' => __('Color', 'webt'),
+                'type' => Controls_Manager::COLOR,
+                'selectors' => [
+                    '.woocommerce {{WRAPPER}} .price del, .woocommerce {{WRAPPER}} .price del span.amount' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            [
+                'name' => 'regular_price_typography',
+                'selector' => '.woocommerce {{WRAPPER}} .price del',
+            ]
+        );
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'you_save_heading',
+            [
+                'label' => __('You Save', 'webt'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+        $this->add_control(
+            'webt_style_warning',
+            [
+                'type' => Controls_Manager::RAW_HTML,
+                'raw' => __('\'You Save Calculator\' is only visible on the product page when viewing a product On Sale.', 'webt'),
+                'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
+            ]
+        );
         $this->add_control(
             'you_save_color',
             [
@@ -349,9 +373,8 @@ class Widget_Product_Price extends Base_Widget
 
 ?>
             <style>
-                div.woocommerce-variation-price,
-                div.woocommerce-variation-availability,
-                div.woocommerce-variation-data-null {
+                div.variation-price,
+                div.variation-data-price-fallback {
                     height: 0px !important;
                     overflow: hidden;
                     position: relative;
@@ -367,31 +390,15 @@ class Widget_Product_Price extends Base_Widget
             </style>
             <script>
                 jQuery(document).ready(function($) {
-                    // When variable price is selected by default
-                    setTimeout(function() {
-                        if (0 < $('input.variation_id').val() && null != $('input.variation_id').val()) {
-                            if ($('p.availability'))
-                                $('p.availability').remove();
-
-                            $('p.price').html($('div.woocommerce-variation-price > span.price').html());
-                            $('div.woocommerce-variation-data').append('<p class="availability">' + $('div.woocommerce-variation-availability').html() + '</p>');
-                        }
-                    }, 300);
 
                     $('input.variation_id').change(function() {
 
                         if (0 < $('input.variation_id').val() && null != $('input.variation_id').val()) {
-                            if ($('.woocommerce-variation-data p.availability') || $('.woocommerce-variation-data p.stock'))
-                                $('.woocommerce-variation-data p').each(function() {
-                                    $(this).remove();
-                                });
-
                             $('p.price').html($('div.woocommerce-variation-price > span.price').html())
-                            $('div.woocommerce-variation-data').append('<p class="availability">' + $('div.woocommerce-variation-availability').html() + '</p>');
+
                         } else {
-                            $('p.price').html($('div.woocommerce-variation-data-null').html());
-                            if ($('p.availability'))
-                                $('p.availability').remove();
+                            $('p.price').html($('div.variation-data-price-fallback').html());
+
                         }
                         if ('' != $('input.variation_id').val()) {
 
@@ -411,7 +418,7 @@ class Widget_Product_Price extends Base_Widget
                                     }
                                 },
                                 error: function(errorThrown) {
-                                    console.log(errorThrown);
+                                        console.log(errorThrown);
                                 }
                             });
                         }
@@ -423,12 +430,11 @@ class Widget_Product_Price extends Base_Widget
 
             echo '
                 <p class="price">' . $price . '</p>
-                <div class="woocommerce-variation-data"></div>		
-                <div class="woocommerce-variation-data-null">' . $price . '</div>
+                <div class="variation-data-price-fallback">' . $price . '</div>
                 ';
         } else {
         ?>
-            <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $product->get_price_html(); ?></p>
+            <p class="<?php echo esc_attr(apply_filters('woocommerce_product_price_class', 'price')); ?>"><?php echo $product->get_price_html(); ?> <span class="variation-data-discount"><?php echo $settings['you_save_title']; echo webt_single_product_calc_amount_saved(); echo $settings['you_save_title_after']; ?></span></p>
 <?php
         }
     }

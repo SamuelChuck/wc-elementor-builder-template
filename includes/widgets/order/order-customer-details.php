@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Order_Customer_Details_Widget extends Widget_Base
+class Widget_Order_Customer_Details extends Widget_Base
 {
 
 	/**
@@ -52,13 +52,13 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 		return ['webt-checkout'];
 	}
 
-    /**
-     * Search keywords
-     */
-    public function get_keywords()
-    {
-        return ['webt', 'woocommerce', 'customer', 'order', 'details', 'myaccount'];
-    }
+	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'customer', 'order', 'details', 'myaccount'];
+	}
 
 	/**
 	 * Register oEmbed widget controls.
@@ -149,17 +149,49 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 			]
 		);
 		$this->add_responsive_control(
-			'column_space_between',
+			'column_space_between_vertical',
 			[
-				'label' => esc_html__('Margin', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'allowed_dimensions' => ['top', 'left'],
-				'size_units' => ['px', 'em'],
+				'label' => __('Vertical Gap', 'webt'),
+				'type' =>  Controls_Manager::SLIDER,
+				'size_units' => ['px', 'em', '%'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
 				'selectors' => [
-					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column.col-2' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column.col-2' => 'margin-top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
+
+		$this->add_responsive_control(
+			'column_space_between_horizontal',
+			[
+				'label' => __('Horizonal Gap', 'webt'),
+				'type' =>  Controls_Manager::SLIDER,
+				'size_units' => ['px', 'em', '%'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 50,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column.col-2' => 'margin-left: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->add_responsive_control(
 			'column_width',
 			[
@@ -169,21 +201,21 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 				'range' => [
 					'px' => [
 						'min' => 0,
-						'max' => 1000,
+						'max' => 400,
 						'step' => 5,
 					],
 					'%' => [
 						'min' => 0,
-						'max' => 100,
+						'max' => 50,
 					],
 				],
 				'devices' => ['desktop', 'tablet', 'mobile'],
 				'desktop_default' => [
-					'size' => 40,
+					'size' => 50,
 					'unit' => '%',
 				],
 				'tablet_default' => [
-					'size' => 48,
+					'size' => 50,
 					'unit' => '%',
 				],
 				'mobile_default' => [
@@ -476,6 +508,10 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 		}
 		$order = wc_get_order($order_id);
 
+		if (empty($order) || !$order) {
+			return;
+		}
+
 		$show_customer_details = current_user_can('administrator') || (is_user_logged_in() && $order->get_user_id() === get_current_user_id());
 
 		if ($show_customer_details) {
@@ -505,4 +541,4 @@ class Widget_Order_Customer_Details_Widget extends Widget_Base
 		return $address_selectors;
 	}
 }
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Order_Customer_Details_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Order_Customer_Details());

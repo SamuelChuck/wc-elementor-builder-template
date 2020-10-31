@@ -17,7 +17,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_WEBT_Return_To_Shop_Widget extends Widget_Base
+class Widget_WEBT_Return_To_Shop extends Widget_Base
 {
 
 	/**
@@ -265,4 +265,4 @@ class Widget_WEBT_Return_To_Shop_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_WEBT_Return_To_Shop_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_WEBT_Return_To_Shop ());

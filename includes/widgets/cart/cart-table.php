@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Widget_Cart_Table_Widget extends Widget_Base
+class Widget_Cart_Table extends Widget_Base
 {
 
     /**
@@ -53,13 +53,13 @@ class Widget_Cart_Table_Widget extends Widget_Base
         return ['webt-cart'];
     }
 
-	/**
-	 * Search keywords
-	 */
-	public function get_keywords()
-	{
-		return ['webt', 'woocommerce', 'cart', 'table'];
-	}
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'cart', 'table'];
+    }
 
     /**
      * Register oEmbed widget controls.
@@ -147,9 +147,39 @@ class Widget_Cart_Table_Widget extends Widget_Base
 
         $this->end_controls_section();
 
-        // Cart Table Content
         $this->start_controls_section(
-            'cart_content_style_section',
+            'cart_table_style_section',
+            [
+                'label' => __('Table', 'webt'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'table_border',
+                'label' => __('Border', 'webt'),
+                'selector' => '{{WRAPPER}} .shop_table.cart',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'table_margin',
+            [
+                'label' => __('margin', 'webt'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .shop_table.cart' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
+            'cart_table_cell_style_section',
             [
                 'label' => __('Table Cell', 'webt'),
                 'tab' => Controls_Manager::TAB_STYLE,
@@ -560,20 +590,19 @@ class Widget_Cart_Table_Widget extends Widget_Base
         $this->end_controls_section();
 
         //Remove Product Button
-
         $this->start_controls_section(
-            'cart_product_delete_button_style',
+            'cart_product_remove_button_style',
             array(
                 'label' => __('Remove Button', 'webt'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
 
-        $this->start_controls_tabs('cart_delete_style_tabs');
+        $this->start_controls_tabs('cart_remove_style_tabs');
 
         // Product Remove Button Normal Style
         $this->start_controls_tab(
-            'cart_product_delete_button_normal',
+            'cart_product_remove_button_normal',
             [
                 'label' => __('Normal', 'webt'),
             ]
@@ -585,18 +614,18 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'label' => __('Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove' => 'color: {{VALUE}} !important',
                 ],
             ]
         );
 
         $this->add_control(
-            'cart_product_delete_button_bg_color',
+            'cart_product_remove_button_bg_color',
             [
                 'label' => __('Background Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -604,41 +633,41 @@ class Widget_Cart_Table_Widget extends Widget_Base
         $this->add_group_control(
             Group_Control_Typography::get_type(),
             array(
-                'name'      => 'cart_delete_button_typography',
+                'name'      => 'cart_remove_button_typography',
                 'label'     => __('Typography', 'webt'),
-                'selector'  => '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete',
+                'selector'  => '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove',
             )
         );
 
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name' => 'cart_delete_button_border',
+                'name' => 'cart_remove_button_border',
                 'label' => __('Border', 'webt'),
-                'selector' => '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete',
+                'selector' => '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove',
             ]
         );
 
         $this->add_responsive_control(
-            'cart_product_delete_button_border_radius',
+            'cart_product_remove_button_border_radius',
             [
                 'label' => __('Border Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
         $this->add_responsive_control(
-            'cart_product_delete_button_padding',
+            'cart_product_remove_button_padding',
             [
                 'label' => __('Padding', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -647,30 +676,30 @@ class Widget_Cart_Table_Widget extends Widget_Base
 
         // Product Title Hover Style
         $this->start_controls_tab(
-            'cart_product_delete_button_hover',
+            'cart_product_remove_button_hover',
             [
                 'label' => __('Hover', 'webt'),
             ]
         );
 
         $this->add_control(
-            'cart_product_delete_button_hover_color',
+            'cart_product_remove_button_hover_color',
             [
                 'label' => __('Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
 
         $this->add_control(
-            'cart_product_delete_button_hover_bg_color',
+            'cart_product_remove_button_hover_bg_color',
             [
                 'label' => __('Background Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete:hover' => 'background-color: {{VALUE}}; transition:0.4s',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove:hover' => 'background-color: {{VALUE}}; transition:0.4s',
                 ],
             ]
         );
@@ -678,20 +707,20 @@ class Widget_Cart_Table_Widget extends Widget_Base
         $this->add_group_control(
             Group_Control_Border::get_type(),
             [
-                'name' => 'cart_product_delete_button_hover_border',
+                'name' => 'cart_product_remove_button_hover_border',
                 'label' => __('Border', 'webt'),
-                'selector' => '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete:hover',
+                'selector' => '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove:hover',
             ]
         );
 
         $this->add_responsive_control(
-            'cart_product_delete_button_hover_border_radius',
+            'cart_product_remove_button_hover_border_radius',
             [
                 'label' => __('Border Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete a.delete:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -701,18 +730,28 @@ class Widget_Cart_Table_Widget extends Widget_Base
         $this->end_controls_tabs();
 
         $this->add_control(
-            'cart_product_delete_table_margin',
+            'cart_product_remove_table_margin',
             [
                 'label' => __('Margin', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-delete' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .shop_table.cart tr.cart_item .product-remove a.remove' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
 
+        $this->end_controls_section();
+
         /*Update Cat Button*/
+        $this->start_controls_section(
+            'cart_update_button_style',
+            array(
+                'label' => __('Update Button', 'webt'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            )
+        );
+
         $this->start_controls_tabs('cart_update_style_tabs');
 
         // Normal Style
@@ -729,7 +768,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'label' => __('Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -740,7 +779,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'label' => __('Background Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button' => 'background-color: {{VALUE}}',
                 ],
             ]
         );
@@ -750,7 +789,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
             array(
                 'name'      => 'cart_update_button_typography',
                 'label'     => __('Typography', 'webt'),
-                'selector'  => '{{WRAPPER}} .shop_table.cart .actions > input.button',
+                'selector'  => '{{WRAPPER}} .woocommerce-cart-form .actions button.button',
             )
         );
 
@@ -759,7 +798,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
             [
                 'name' => 'cart_update_button_border',
                 'label' => __('Border', 'webt'),
-                'selector' => '{{WRAPPER}} .shop_table.cart .actions > input.button',
+                'selector' => '{{WRAPPER}} .woocommerce-cart-form .actions button.button',
             ]
         );
 
@@ -770,7 +809,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -782,7 +821,19 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'cart_update_button__margin',
+            [
+                'label' => __('Margin', 'webt'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -803,7 +854,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'label' => __('Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button:hover' => 'color: {{VALUE}}',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button:hover' => 'color: {{VALUE}}',
                 ],
             ]
         );
@@ -814,7 +865,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'label' => __('Background Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button:hover' => 'background-color: {{VALUE}}; transition:0.4s',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button:hover' => 'background-color: {{VALUE}}; transition:0.4s',
                 ],
             ]
         );
@@ -824,7 +875,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
             [
                 'name' => 'cart_update_button_hover_border',
                 'label' => __('Border', 'webt'),
-                'selector' => '{{WRAPPER}} .shop_table.cart .actions > input.button:hover',
+                'selector' => '{{WRAPPER}} .woocommerce-cart-form .actions button.button:hover',
             ]
         );
 
@@ -835,7 +886,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .shop_table.cart .actions > input.button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .woocommerce-cart-form .actions button.button:hover' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -1012,7 +1063,7 @@ class Widget_Cart_Table_Widget extends Widget_Base
     }
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Cart_Table_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Cart_Table());
 
 /**
  * Cart Shortcode

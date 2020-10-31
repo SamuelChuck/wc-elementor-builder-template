@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
+class Widget_MyAccount_Edit_Account extends Widget_Base
 {
 
 	/**
@@ -457,4 +457,4 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Edit_Account_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Edit_Account ());

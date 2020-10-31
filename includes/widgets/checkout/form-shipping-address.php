@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Shipping_Form_Widget extends Widget_Base
+class Widget_Shipping_Form extends Widget_Base
 {
 
 	/**
@@ -558,4 +558,4 @@ class Widget_Shipping_Form_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Shipping_Form_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Shipping_Form ());

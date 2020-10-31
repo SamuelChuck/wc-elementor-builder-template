@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Register_Widget extends Widget_Base
+class Widget_Register extends Widget_Base
 {
 
 	/**
@@ -71,4 +71,4 @@ class Widget_Register_Widget extends Widget_Base
 		wc_get_template('myaccount/form-register.php');
 	}
 }
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Register_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Register ());

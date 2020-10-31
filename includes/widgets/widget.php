@@ -64,6 +64,8 @@ if (!class_exists('Widgets_Registered')) {
                 require_once(dirname(__FILE__) . '/cart/cart-total.php');
                 require_once(dirname(__FILE__) . '/cart/empty-cart.php');
                 require_once(dirname(__FILE__) . '/cart/empty-cart-button.php');
+                require_once(dirname(__FILE__) . '/cart/mini-cart.php');
+
 
                 /*Global*/
                 require_once(dirname(__FILE__) . '/global/custom-hook.php');
@@ -72,6 +74,8 @@ if (!class_exists('Widgets_Registered')) {
 
                 /*Single Product*/
                 require_once(dirname(__FILE__) . '/single-product/price.php');
+                require_once(dirname(__FILE__) . '/single-product/stock.php');
+
             }
         }
 

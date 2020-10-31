@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class Widget_MyAccount_Form_Login_Widget extends Widget_Base
+class Widget_MyAccount_Form_Login extends Widget_Base
 {
 
 	/**
@@ -62,6 +62,7 @@ class Widget_MyAccount_Form_Login_Widget extends Widget_Base
 	{
 		return ['webt', 'woocommerce', 'myaccount', 'login', 'form'];
 	}
+	
 	/**
 	 * Register oEmbed widget controls.
 	 *
@@ -1115,4 +1116,4 @@ class Widget_MyAccount_Form_Login_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Login_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Login ());

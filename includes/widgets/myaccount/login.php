@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Login_Widget extends Widget_Base
+class Widget_Login extends Widget_Base
 {
 
 	/**
@@ -77,4 +77,4 @@ class Widget_Login_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Login_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Login ());

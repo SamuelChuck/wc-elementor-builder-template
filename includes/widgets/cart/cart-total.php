@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Widget_Cart_Totals_Widget extends Widget_Base
+class Widget_Cart_Totals extends Widget_Base
 {
 
     /**
@@ -637,4 +637,4 @@ class Widget_Cart_Totals_Widget extends Widget_Base
     }
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Cart_Totals_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Cart_Totals ());

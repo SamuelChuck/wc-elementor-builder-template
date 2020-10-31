@@ -21,23 +21,37 @@ add_action('wp_ajax_nopriv_webt_single_product_calc_amount_saved', 'webt_single_
 //The function below is called via an ajax script in footer.php
 function webt_single_product_calc_amount_saved()
 {
-    // The $_REQUEST contains all the data sent via ajax
-    if (isset($_REQUEST)) {
-        $percentage = 0;
-        $variation_id = sanitize_text_field($_REQUEST['vari_id']);
-        $variable_product = wc_get_product($variation_id);
-        $regular_price = $variable_product->get_regular_price();
-        $sale_price = $variable_product->get_sale_price();
+  // The $_REQUEST contains all the data sent via ajax
+  if (isset($_REQUEST) && !empty($_REQUEST['vari_id'])) {
+    $percentage = 0;
+    $variation_id = sanitize_text_field($_REQUEST['vari_id']);
+    $variable_product = wc_get_product($variation_id);
+    $regular_price = $variable_product->get_regular_price();
+    $sale_price = $variable_product->get_sale_price();
 
-        if (!empty($sale_price)) {
+    if (!empty($sale_price)) {
 
-            $amount_saved = $regular_price - $sale_price;
-            $currency_symbol = get_woocommerce_currency_symbol();
+      $amount_saved = $regular_price - $sale_price;
+      $currency_symbol = get_woocommerce_currency_symbol();
 
-            $percentage = round((($regular_price - $sale_price) / $regular_price) * 100);
-        }
-        die($percentage);
+      $percentage = round((($regular_price - $sale_price) / $regular_price) * 100);
     }
+    die($percentage);
+  }
+  ///
+  $percentage = 0;
+  $product = wc_get_product();
+  $regular_price = $product->get_regular_price();
+  $sale_price = $product->get_sale_price();
+
+  if (!empty($sale_price)) {
+
+    $amount_saved = $regular_price - $sale_price;
+    $currency_symbol = get_woocommerce_currency_symbol();
+
+    $percentage = round((($regular_price - $sale_price) / $regular_price) * 100);
+  }
+  return $percentage;
 }
 
 /* -------------------- Overide Woocommerce template path ------------------- */
