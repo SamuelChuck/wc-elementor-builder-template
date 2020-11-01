@@ -30,8 +30,6 @@ if (!class_exists('Widgets_Registered')) {
         {
             if (class_exists('woocommerce')) {
                 /*My Account*/
-                require_once(dirname(__FILE__) . '/myaccount/login.php');
-                require_once(dirname(__FILE__) . '/myaccount/register.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-login.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-register.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-edit-account.php');

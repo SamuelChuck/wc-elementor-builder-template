@@ -5,8 +5,8 @@ Requires at least: 5.0.1<br>
 Tested up to: 5.5.1<br>
 Requires PHP: 7.2<br>
 Stable tag: master<br>
-
-
+<br>
+<strong style="color:#ffcccb">This Plugin is currently under development and some bugs has not been found, if you do find any please report it. Thank you</strong>
 <h3>== Description == </h3><br>
 <p>Effortlessly layout & design your WooCommerce Pages endpoints and more, bring your Woocommerce Elementor store closer to perfection</p>
 <br>
@@ -32,6 +32,7 @@ Templates are appended to account endpoints to handle design and specific action
 Account endpoints currently supported:<br>
 * Edit Account<br>
 * Addresses	<br>
+* Edit Address <br>
 * Payment Methods	<br>
 * No Payment Methods	<br>
 * Account login	<br>
@@ -73,9 +74,10 @@ Orders endpoints currently supported: <br>
 * 6 WooCommerce Account Form Elementor Elements <br>
 * 7 WooCommerce My Account Elementor Elements <br>
 * 10 WooCommerce Checkout Elementor Elements <br>
-* 4 WooCommerce Cart Elementor Elements <br>
+* 5 WooCommerce Cart Elementor Elements <br>
 * 3 WooCommerce Global Elementor Elements <br>
-* 30 Total WooCommerce Elementor Elements <br>
+* 2 WooCommerce Product Elementor Elements <br>
+* 33 Total WooCommerce Elementor Elements <br>
 
 Contributors & Developers <br>
 “WooCommerce Elementor Builder Template” is open source software. The following people have contributed to this plugin. <br>
