@@ -167,117 +167,7 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 
 		$this->end_controls_section();
 
-		/*Error Message Style Tab*/
-		$this->start_controls_section(
-			'section_error_message_style',
-			array(
-				'label' => esc_html__('Message', 'webt'),
-				'tab' => Controls_Manager::TAB_STYLE,
-			)
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'      => 'error_message_typography',
-				'label'     => esc_html__('Typography', 'elementor'),
-				'selector'  => '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message',
-			)
-		);
-		$this->add_control(
-			'error_message_color',
-			[
-				'label' => esc_html__('Color', 'elementor'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'error_message_text_align',
-			[
-				'label'        => esc_html__('Alignment', 'elementor'),
-				'type'         => Controls_Manager::CHOOSE,
-				'options'      => [
-					'left'   => [
-						'title' => esc_html__('Left', 'elementor'),
-						'icon'  => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => esc_html__('Center', 'elementor'),
-						'icon'  => 'fa fa-align-center',
-					],
-					'right'  => [
-						'title' => esc_html__('Right', 'elementor'),
-						'icon'  => 'fa fa-align-right',
-					],
-				],
-				'default'      => '',
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'text-align: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'error_message_margin',
-			[
-				'label' => esc_html__('Margin', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'error_message_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'error_message_border',
-				'selector' => '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message',
-				'exclude' => ['color'],
-			]
-		);
-		$this->add_control(
-			'error_message_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'error_message_entrance_animation',
-			[
-				'label' => __('Entrance Animation', 'plugin-domain'),
-				'type' => Controls_Manager::ANIMATION,
-				'prefix_class' => 'animated ',
-			]
-		);
-		$this->add_control(
-			'error_message_hover_animation',
-			[
-				'label' => __('Hover Animation', 'plugin-domain'),
-				'type' => Controls_Manager::HOVER_ANIMATION,
-				'prefix_class' => 'elementor-animation-',
-			]
-		);
-
-		$this->end_controls_section();
-
+		/* ----- Style Section ----- */
 		// Form style
 		$this->start_controls_section(
 			'form_style',
@@ -290,17 +180,17 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'form_border',
-				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row-password form.woocommerce-ResetPassword.lost_reset_password',
-				'exclude' => ['color'],
+				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password ',
 			]
 		);
-		$this->add_control(
-			'form_border_color',
+		$this->add_responsive_control(
+			'form_border_radius',
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
+				'label' => esc_html__('Border Radius', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
 				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password' => 'border-color: {{VALUE}}',
+					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -571,18 +461,6 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 			[
 				'name' => 'input_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password input.input-text',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password input.input-text' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -640,21 +518,8 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password input.input-text:focus',
-				'exclude' => ['color'],
 			]
 		);
-
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password input.input-text:focus' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
 		$this->add_control(
 			'input_focus_bg_color',
 			[
@@ -685,7 +550,6 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password input.input-text:focus',
 			]
 		);
-		//
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
 		$this->end_controls_section();
@@ -706,12 +570,41 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 				'selector'  => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
 			)
 		);
+
+		$this->start_controls_tabs('button_style_tabs');
+		$this->start_controls_tab(
+			'button_style_normal',
+			[
+				'label' => esc_html__('Normal', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
-				'exclude' => ['color'],
 			]
 		);
 		$this->add_control(
@@ -725,6 +618,81 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 				],
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'button_style_hover',
+			[
+				'label' => esc_html__('Hover', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color_hover',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color_hover',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border_hover',
+				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover',
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow_hover',
+				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover',
+			]
+		);
+		$this->add_control(
+			'button_transition',
+			[
+				'label' => esc_html__('Transition Duration', 'webt'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0.2,
+				],
+				'range' => [
+					'px' => [
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'transition: all {{SIZE}}s',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 		$this->add_responsive_control(
 			'button_margin',
 			[
@@ -774,127 +742,6 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 			]
 		);
 
-		/////
-		$this->start_controls_tabs('button_style_tabs');
-
-		$this->start_controls_tab(
-			'button_style_normal',
-			[
-				'label' => esc_html__('Normal', 'webt'),
-			]
-		);
-
-		$this->add_control(
-			'button_text_color',
-			[
-				'label' => esc_html__('Text Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color',
-			[
-				'label' => esc_html__('Background Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'button_style_hover',
-			[
-				'label' => esc_html__('Hover', 'webt'),
-			]
-		);
-
-		$this->add_control(
-			'button_text_color_hover',
-			[
-				'label' => esc_html__('Text Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color_hover',
-			[
-				'label' => esc_html__('Background Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color_hover',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'button_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover',
-			]
-		);
-		$this->add_control(
-			'button_transition',
-			[
-				'label' => esc_html__('Transition Duration', 'webt'),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 0.2,
-				],
-				'range' => [
-					'px' => [
-						'max' => 2,
-						'step' => 0.1,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-lost-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'transition: all {{SIZE}}s',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
 		$this->end_controls_section();
 	}
 
@@ -954,4 +801,4 @@ class Widget_MyAccount_Form_Lost_Password extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Lost_Password ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Lost_Password());

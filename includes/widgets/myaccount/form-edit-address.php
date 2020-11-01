@@ -4,8 +4,10 @@ namespace WEBT;
 
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
+use Elementor\Group_Control_Border;
+use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Text_Shadow;
 use Elementor\Group_Control_Typography;
-use WC_Shortcode_My_Account;
 use WEBT\Plugin;
 
 /**
@@ -18,7 +20,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_MyAccount_Edit_Address extends Widget_Base
+class Widget_MyAccount_Edit_Address_Form extends Widget_Base
 {
 
 	/**
@@ -34,7 +36,7 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('Edit Address', 'webt');
+		return esc_html__('Edit Address Form', 'webt');
 	}
 
 	/**
@@ -66,63 +68,10 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 	 */
 	protected function _register_controls()
 	{
-		// Message
-		$this->start_controls_section(
-			'message_style',
-			array(
-				'label' => esc_html__('Message', 'webt'),
-				'tab' => Controls_Manager::TAB_STYLE,
-			)
-		);
-		$this->add_group_control(
-			Group_Control_Typography::get_type(),
-			array(
-				'name'      => 'message_typography',
-				'label'     => esc_html__('Typography', 'elementor'),
-				'selector'  => '{{WRAPPER}} .webt-form-edit-address > p',
-			)
-		);
-		$this->add_control(
-			'message_color',
-			[
-				'label' => esc_html__('Color', 'elementor'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-form-edit-address > p' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'message_align',
-			[
-				'label'        => esc_html__('Alignment', 'elementor'),
-				'type'         => Controls_Manager::CHOOSE,
-				'options'      => [
-					'left'   => [
-						'title' => esc_html__('Left', 'elementor'),
-						'icon'  => 'fa fa-align-left',
-					],
-					'center' => [
-						'title' => esc_html__('Center', 'elementor'),
-						'icon'  => 'fa fa-align-center',
-					],
-					'right'  => [
-						'title' => esc_html__('Right', 'elementor'),
-						'icon'  => 'fa fa-align-right',
-					],
-				],
-				'prefix_class' => '',
-				'default'      => '',
-				'selectors' => [
-					'{{WRAPPER}} .webt-form-edit-address > p' => 'text-align: {{VALUE}}',
-				],
-			]
-		);
-		$this->end_controls_section();
 
 		// header
 		$this->start_controls_section(
-			'header_style',
+			'section_header_style',
 			array(
 				'label' => esc_html__('Header', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -133,7 +82,7 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 			array(
 				'name'      => 'header_typography',
 				'label'     => esc_html__('Typography', 'elementor'),
-				'selector'  => '{{WRAPPER}} .woocommerce-Address-title, {{WRAPPER}} .woocommerce-Address-title h3',
+				'selector'  => '{{WRAPPER}} .woocommerce-Address-title, {{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3',
 			)
 		);
 		$this->add_control(
@@ -142,7 +91,7 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 				'label' => esc_html__('Color', 'elementor'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .woocommerce-Address-title h3' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -168,40 +117,128 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 				'prefix_class' => '',
 				'default'      => '',
 				'selectors' => [
-					'{{WRAPPER}} .woocommerce-Address-title' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3' => 'text-align: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'label' => __('Text Shadow', 'plugin-domain'),
+				'selector' => '{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3',
+			]
+		);
+
+		$this->end_controls_section();
+
+		// Form style
+		$this->start_controls_section(
+			'form_style',
+			array(
+				'label' => esc_html__('Form Style', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'label' => __( 'Border', 'webt' ),
+				'selector' => '{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields',
+			]
+		);
+		$this->add_responsive_control(
+			'form_border_radius',
+			[
+				'label' => esc_html__('Border Radius', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'form_box_shadow',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields',
+			]
+		);
+		$this->add_control(
+			'form_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'form_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'form_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
 		$this->end_controls_section();
 
-		// address
+		// label
 		$this->start_controls_section(
-			'address_style',
+			'label_style',
 			array(
-				'label' => esc_html__('Address', 'webt'),
+				'label' => esc_html__('Label', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'      => 'address_typography',
+				'name'      => 'label_typography',
 				'label'     => esc_html__('Typography', 'elementor'),
-				'selector'  => '{{WRAPPER}} address',
+				'selector'  => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields .form-row label',
 			)
 		);
 		$this->add_control(
-			'address_color',
+			'label_color',
 			[
-				'label' => esc_html__('Color', 'elementor'),
+				'label' => esc_html__('Label Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} address' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields .form-row label' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'label_required_color',
+			[
+				'label' => esc_html__('Required Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields .form-row label .required' => 'color: {{VALUE}}',
 				],
 			]
 		);
 		$this->add_responsive_control(
-			'address_align',
+			'label_align',
 			[
 				'label'        => esc_html__('Alignment', 'elementor'),
 				'type'         => Controls_Manager::CHOOSE,
@@ -222,10 +259,387 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 				'prefix_class' => '',
 				'default'      => '',
 				'selectors' => [
-					'{{WRAPPER}} address' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields .form-row label' => 'text-align: {{VALUE}}',
 				],
 			]
 		);
+		$this->end_controls_section();
+
+		// Input Fields
+		$this->start_controls_section(
+			'input_style',
+			array(
+				'label' => esc_html__('Input', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'input_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text',
+			)
+		);
+		$this->add_responsive_control(
+			'input_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->start_controls_tabs('tabs_input_style');
+		$this->start_controls_tab(
+			'tab_input_normal',
+			[
+				'label' => esc_html__('Normal', 'webt'),
+			]
+		);
+		$this->add_control(
+			'input_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'input_border',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text',
+				'exclude' => ['color'],
+			]
+		);
+
+		$this->add_control(
+			'input_border_color',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'input_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'input_border_radius',
+			[
+				'label' => esc_html__('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'input_box_shadow',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_input_focus',
+			[
+				'label' => esc_html__('Focus', 'webt'),
+			]
+		);
+		$this->add_control(
+			'input_focus_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text:focus' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'input_focus_border',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text:focus',
+				'exclude' => ['color'],
+			]
+		);
+
+		$this->add_control(
+			'input_focus_border_color',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text:focus' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'input_focus_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text:focus' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'input_focus_border_radius',
+			[
+				'label' => esc_html__('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text:focus' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'input_focus_box_shadow',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields input.input-text:focus',
+			]
+		);
+		//
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+		$this->end_controls_section();
+
+		// button style
+		$this->start_controls_section(
+			'section_button_style',
+			array(
+				'label' => esc_html__('Button', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'      => 'button_typography',
+				'label'     => esc_html__('Typography', 'elementor'),
+				'selector'  => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button',
+			)
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button',
+				'exclude' => ['color'],
+			]
+		);
+		$this->add_control(
+			'button_border_radius',
+			[
+				'label' => __('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'button_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'button_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_width',
+			[
+				'label' => __('Width', 'webt'),
+				'type' =>  Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->start_controls_tabs('button_style_tabs');
+
+		$this->start_controls_tab(
+			'button_style_normal',
+			[
+				'label' => esc_html__('Normal', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_border_color',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'button_style_hover',
+			[
+				'label' => esc_html__('Hover', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color_hover',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color_hover',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_border_color_hover',
+			[
+				'label' => esc_html__('Border Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button:hover' => 'border-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow_hover',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button:hover',
+			]
+		);
+		$this->add_control(
+			'button_transition',
+			[
+				'label' => esc_html__('Transition Duration', 'webt'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0.2,
+				],
+				'range' => [
+					'px' => [
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .webt-form-edit-address .woocommerce-address-fields button.button' => 'transition: all {{SIZE}}s',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 		$this->end_controls_section();
 	}
 
@@ -240,15 +654,79 @@ class Widget_MyAccount_Edit_Address extends Widget_Base
 		}
 		global $wp;
 		$type = '';
-
-		if (isset($wp->query_vars['edit-address'])) {
-			$type = $wp->query_vars['edit-address'];
+		$edit_address = get_option('woocommerce_myaccount_edit_address_endpoint');
+		if (isset($wp->query_vars[$edit_address])) {
+			$type = $wp->query_vars[$edit_address];
 		} else {
 			$type = wc_edit_address_i18n(sanitize_title($type), true);
 		}
 		echo '<div class="webt-form-edit-address">';
-		WC_Shortcode_My_Account::edit_address($type);
+		$this->edit_address($type);
 		echo '</div>';
 	}
+	
+	/**
+	 * edit_address
+	 *
+	 * @param  mixed $load_address
+	 * @return void
+	 */
+	public function edit_address($load_address = 'billing')
+	{
+		$current_user = wp_get_current_user();
+		$load_address = sanitize_key($load_address);
+		$country      = get_user_meta(get_current_user_id(), $load_address . '_country', true);
+
+		if (!$country) {
+			$country = WC()->countries->get_base_country();
+		}
+
+		if ('billing' === $load_address) {
+			$allowed_countries = WC()->countries->get_allowed_countries();
+
+			if (!array_key_exists($country, $allowed_countries)) {
+				$country = current(array_keys($allowed_countries));
+			}
+		}
+
+		if ('shipping' === $load_address) {
+			$allowed_countries = WC()->countries->get_shipping_countries();
+
+			if (!array_key_exists($country, $allowed_countries)) {
+				$country = current(array_keys($allowed_countries));
+			}
+		}
+
+		$address = WC()->countries->get_address_fields($country, $load_address . '_');
+
+		// Enqueue scripts.
+		wp_enqueue_script('wc-country-select');
+		wp_enqueue_script('wc-address-i18n');
+
+		// Prepare values.
+		foreach ($address as $key => $field) {
+
+			$value = get_user_meta(get_current_user_id(), $key, true);
+
+			if (!$value) {
+				switch ($key) {
+					case 'billing_email':
+					case 'shipping_email':
+						$value = $current_user->user_email;
+						break;
+				}
+			}
+
+			$address[$key]['value'] = apply_filters('woocommerce_my_account_edit_address_field_value', $value, $key, $load_address);
+		}
+
+		wc_get_template(
+			'myaccount/edit-address.php',
+			array(
+				'load_address' => $load_address,
+				'address'      => apply_filters('woocommerce_address_to_edit', $address, $load_address),
+			)
+		);
+	}
 }
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Edit_Address ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Edit_Address_Form());

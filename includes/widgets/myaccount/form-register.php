@@ -288,7 +288,7 @@ class Widget_MyAccount_Register_Form extends Widget_Base
 
         $this->end_controls_section();
 
-        /*Title Style*/
+        /*Heading Style*/
         $this->start_controls_section(
             'section_heading_style',
             array(
@@ -341,118 +341,7 @@ class Widget_MyAccount_Register_Form extends Widget_Base
         );
         $this->end_controls_section();
 
-        /*Error Message Style Tab*/
-        /*****************************************************/
-        $this->start_controls_section(
-            'section_error_message_style',
-            array(
-                'label' => esc_html__('Message', 'webt'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            )
-        );
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            array(
-                'name'      => 'error_message_typography',
-                'label'     => esc_html__('Typography', 'elementor'),
-                'selector'  => '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message',
-            )
-        );
-        $this->add_control(
-            'error_message_color',
-            [
-                'label' => esc_html__('Color', 'elementor'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'error_message_text_align',
-            [
-                'label'        => esc_html__('Alignment', 'elementor'),
-                'type'         => Controls_Manager::CHOOSE,
-                'options'      => [
-                    'left'   => [
-                        'title' => esc_html__('Left', 'elementor'),
-                        'icon'  => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => esc_html__('Center', 'elementor'),
-                        'icon'  => 'fa fa-align-center',
-                    ],
-                    'right'  => [
-                        'title' => esc_html__('Right', 'elementor'),
-                        'icon'  => 'fa fa-align-right',
-                    ],
-                ],
-                'default'      => '',
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'text-align: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'error_message_margin',
-            [
-                'label' => esc_html__('Margin', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'error_message_padding',
-            [
-                'label' => esc_html__('Padding', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'error_message_border',
-                'selector' => '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message',
-                'exclude' => ['color'],
-            ]
-        );
-        $this->add_control(
-            'error_message_border_color',
-            [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-login p.webt-error.error-message' => 'border-color: {{VALUE}}',
-                ],
-            ]
-        );
-        $this->add_control(
-            'error_message_entrance_animation',
-            [
-                'label' => __('Entrance Animation', 'plugin-domain'),
-                'type' => Controls_Manager::ANIMATION,
-                'prefix_class' => 'animated ',
-            ]
-        );
-        $this->add_control(
-            'error_message_hover_animation',
-            [
-                'label' => __('Hover Animation', 'plugin-domain'),
-                'type' => Controls_Manager::HOVER_ANIMATION,
-                'prefix_class' => 'elementor-animation-',
-            ]
-        );
-
-        $this->end_controls_section();
-
+/* -------Style Section------- */
         // Form style
         $this->start_controls_section(
             'form_style',
@@ -466,16 +355,16 @@ class Widget_MyAccount_Register_Form extends Widget_Base
             [
                 'name' => 'form_border',
                 'selector' => '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register',
-                'exclude' => ['color'],
             ]
         );
-        $this->add_control(
-            'form_border_color',
+        $this->add_responsive_control(
+            'form_border_radius',
             [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
+                'label' => esc_html__('Border Radius', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register' => 'border-color: {{VALUE}}',
+                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -599,30 +488,6 @@ class Widget_MyAccount_Register_Form extends Widget_Base
                 'selector'  => '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text',
             )
         );
-        $this->add_responsive_control(
-            'input_margin',
-            [
-                'label' => esc_html__('Margin', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
-            ]
-        );
-        $this->add_responsive_control(
-            'input_padding',
-            [
-                'label' => esc_html__('Padding', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-                'separator' => 'before',
-            ]
-        );
 
         $this->start_controls_tabs('tabs_input_style');
         $this->start_controls_tab(
@@ -646,18 +511,6 @@ class Widget_MyAccount_Register_Form extends Widget_Base
             [
                 'name' => 'input_border',
                 'selector' => '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text',
-                'exclude' => ['color'],
-            ]
-        );
-
-        $this->add_control(
-            'input_border_color',
-            [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text' => 'border-color: {{VALUE}}',
-                ],
             ]
         );
 
@@ -715,18 +568,6 @@ class Widget_MyAccount_Register_Form extends Widget_Base
             [
                 'name' => 'input_focus_border',
                 'selector' => '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text:focus',
-                'exclude' => ['color'],
-            ]
-        );
-
-        $this->add_control(
-            'input_focus_border_color',
-            [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text:focus' => 'border-color: {{VALUE}}',
-                ],
             ]
         );
 
@@ -763,6 +604,31 @@ class Widget_MyAccount_Register_Form extends Widget_Base
         //
         $this->end_controls_tab();
         $this->end_controls_tabs();
+        $this->add_responsive_control(
+            'input_margin',
+            [
+                'label' => esc_html__('Margin', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+        $this->add_responsive_control(
+            'input_padding',
+            [
+                'label' => esc_html__('Padding', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .webt-account-form-register form.woocommerce-form-register input.input-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+
         $this->end_controls_section();
 
         // button style
@@ -781,75 +647,9 @@ class Widget_MyAccount_Register_Form extends Widget_Base
                 'selector'  => '{{WRAPPER}} .webt-account-form-register button',
             )
         );
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'button_border',
-                'selector' => '{{WRAPPER}} .webt-account-form-register button',
-                'exclude' => ['color'],
-            ]
-        );
-        $this->add_responsive_control(
-            'button_border_radius',
-            [
-                'label' => esc_html__('Border radius', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'button_margin',
-            [
-                'label' => esc_html__('Margin', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_responsive_control(
-            'button_padding',
-            [
-                'label' => esc_html__('Padding', 'elementor'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em'],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'button_width',
-            [
-                'label' => __('Width', 'webt'),
-                'type' =>  Controls_Manager::SLIDER,
-                'size_units' => ['px', '%'],
-                'range' => [
-                    'px' => [
-                        'min' => 0,
-                        'max' => 1000,
-                        'step' => 5,
-                    ],
-                    '%' => [
-                        'min' => 0,
-                        'max' => 100,
-                    ],
-                ],
-                'default' => [
-                    'unit' => '%',
-                    'size' => 100,
-                ],
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register button.woocommerce-button' => 'width: {{SIZE}}{{UNIT}};',
-                ],
-            ]
-        );
 
-        ///// Tab//Style/////
+
+
         $this->start_controls_tabs('button_style_tabs');
 
         $this->start_controls_tab(
@@ -880,17 +680,25 @@ class Widget_MyAccount_Register_Form extends Widget_Base
                 ],
             ]
         );
-
-        $this->add_control(
-            'button_border_color',
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
             [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
+                'name' => 'button_border',
+                'selector' => '{{WRAPPER}} .webt-account-form-register button',
+            ]
+        );
+        $this->add_responsive_control(
+            'button_border_radius',
+            [
+                'label' => esc_html__('Border radius', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
                 'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register button' => 'border-color: {{VALUE}}',
+                    '{{WRAPPER}} .webt-account-form-register button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
+
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -930,16 +738,14 @@ class Widget_MyAccount_Register_Form extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'button_border_color_hover',
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
             [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .webt-account-form-register button:hover' => 'border-color: {{VALUE}}',
-                ],
+                'name' => 'button_border_hover',
+                'selector' => '{{WRAPPER}} .webt-account-form-register button:hover',
             ]
         );
+
         $this->add_group_control(
             Group_Control_Box_Shadow::get_type(),
             [
@@ -970,6 +776,53 @@ class Widget_MyAccount_Register_Form extends Widget_Base
         $this->end_controls_tab();
 
         $this->end_controls_tabs();
+
+
+
+        $this->add_responsive_control(
+            'button_margin',
+            [
+                'label' => esc_html__('Margin', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .webt-account-form-register button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_responsive_control(
+            'button_padding',
+            [
+                'label' => esc_html__('Padding', 'elementor'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em'],
+                'selectors' => [
+                    '{{WRAPPER}} .webt-account-form-register button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+        $this->add_control(
+            'button_width',
+            [
+                'label' => __('Width', 'webt'),
+                'type' =>  Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 1000,
+                        'step' => 5,
+                    ],
+                    '%' => [
+                        'min' => 0,
+                        'max' => 100,
+                    ],
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .webt-account-form-register button.woocommerce-button' => 'width: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
 
         $this->end_controls_section();
     }
@@ -1093,4 +946,4 @@ class Widget_MyAccount_Register_Form extends Widget_Base
         }
     }
 }
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Register_Form ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Register_Form());

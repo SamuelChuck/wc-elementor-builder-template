@@ -11,7 +11,7 @@ class MyAccount
      */
     public function hooks()
     {
-        add_filter('wc_get_template', [$this,'myaccount_page_template'], 100, 5);
+        add_filter('wc_get_template', [$this, 'myaccount_page_template'], 100, 5);
         if (!empty(get_option('webt_myaccount_template_id', ''))) {
             remove_action('woocommerce_account_content', 'woocommerce_account_content', 10);
             add_action('woocommerce_account_content', [$this, 'the_account_content']);
@@ -20,6 +20,7 @@ class MyAccount
         add_action('webt_woocommerce_account_content_form_register', [$this, 'the_account_register_content']);
 
         add_action('webt_woocommerce_edit_account_content', [$this, 'the_edit_account_content']);
+        add_action('webt_woocommerce_edit_address_content', [$this, 'the_edit_address_content']);
         add_action('webt_woocommerce_addresses_content', [$this, 'the_addresses_content']);
         add_action('webt_woocommerce_payment_methods_content', [$this, 'the_payment_methods_content']);
         add_action('webt_woocommerce_no_payment_methods_content', [$this, 'the_no_payment_methods_content']);
@@ -42,14 +43,15 @@ class MyAccount
     public function myaccount_page_template($located, $name, $args)
     {
         $webt_myaccount_template_id = get_option('webt_myaccount_template_id', '');
-        $webt_myaccount_login_template_id = get_option('webt_myaccount_login_template_id', '');
-        $webt_myaccount_register_template_id = get_option('webt_myaccount_register_template_id', '');
         $webt_addresses_template_id = get_option('webt_addresses_template_id', '');
+        $webt_edit_address_template_id = get_option('webt_edit_address_template_id', '');
         $webt_edit_account_template_id = get_option('webt_edit_account_template_id', '');
+        $webt_lost_password_template_id = get_option('webt_lost_password_template_id', '');
         $webt_payment_methods_template_id = get_option('webt_payment_methods_template_id', '');
+        $webt_myaccount_login_template_id = get_option('webt_myaccount_login_template_id', '');
         $webt_add_payment_method_template_id = get_option('webt_add_payment_method_template_id', '');
         $webt_no_payment_methods_template_id = get_option('webt_no_payment_methods_template_id', '');
-        $webt_lost_password_template_id = get_option('webt_lost_password_template_id', '');
+        $webt_myaccount_register_template_id = get_option('webt_myaccount_register_template_id', '');
         $webt_lost_password_reset_template_id = get_option('webt_lost_password_reset_template_id', '');
         $webt_lost_password_confirmation_template_id = get_option('webt_lost_password_confirmation_template_id', '');
 
@@ -75,6 +77,10 @@ class MyAccount
         } elseif ($name === 'myaccount/my-address.php') {
             if (!empty($webt_addresses_template_id)) {
                 $located = WEBT_TEMPLATE_PATH . 'myaccount/my-address.php';
+            }
+        } elseif ($name === 'myaccount/form-edit-address.php') {
+            if (!empty($webt_edit_address_template_id)) {
+                $located = WEBT_TEMPLATE_PATH . 'myaccount/form-edit-address.php';
             }
         } elseif ($name === 'myaccount/payment-methods.php') {
             if (!empty($webt_payment_methods_template_id || $webt_no_payment_methods_template_id)) {
@@ -113,7 +119,22 @@ class MyAccount
      */
     public function the_account_content($content)
     {
+        global $wp;
         $webt_myaccount_template_id = get_option('webt_myaccount_template_id', '');
+
+        if (!empty($wp->query_vars)) {
+            foreach ($wp->query_vars as $key => $value) {
+                // Ignore pagename param.
+                if ('pagename' === $key) {
+                    continue;
+                }
+
+                if (has_action('woocommerce_account_' . $key . '_endpoint')) {
+                    do_action('woocommerce_account_' . $key . '_endpoint', $value);
+                    return;
+                }
+            }
+        }
 
         if ( /*is_user_logged_in() &&*/!empty($webt_myaccount_template_id)) {
             echo Plugin::elementor_instance()->frontend->get_builder_content_for_display($webt_myaccount_template_id);
@@ -189,6 +210,24 @@ class MyAccount
 
         if (!empty($webt_addresses_template_id)) {
             echo Plugin::elementor_instance()->frontend->get_builder_content_for_display($webt_addresses_template_id);
+        } else {
+            the_content();
+        }
+    }
+
+    /**
+     * My Account Edit Address
+     * the_edit_address_content
+     *
+     * @param  mixed $content
+     * @return void
+     */
+    public function the_edit_address_content($content)
+    {
+        $webt_edit_address_template_id = get_option('webt_edit_address_template_id', '');
+
+        if (!empty($webt_edit_address_template_id)) {
+            echo Plugin::elementor_instance()->frontend->get_builder_content_for_display($webt_edit_address_template_id);
         } else {
             the_content();
         }

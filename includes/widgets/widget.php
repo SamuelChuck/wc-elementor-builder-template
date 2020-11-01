@@ -36,46 +36,48 @@ if (!class_exists('Widgets_Registered')) {
                 require_once(dirname(__FILE__) . '/myaccount/form-register.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-edit-account.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-edit-address.php');
-                require_once(dirname(__FILE__) . '/myaccount/dashboard.php');
-                require_once(dirname(__FILE__) . '/myaccount/logout.php');
-                require_once(dirname(__FILE__) . '/myaccount/payment-methods.php');
-                require_once(dirname(__FILE__) . '/myaccount/form-reset-password.php');
-                require_once(dirname(__FILE__) . '/myaccount/lost-password-confirmation.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-lost-password.php');
+                require_once(dirname(__FILE__) . '/myaccount/form-reset-password.php');
+
+                require_once(dirname(__FILE__) . '/myaccount/logout.php');
+                require_once(dirname(__FILE__) . '/myaccount/dashboard.php');
+                require_once(dirname(__FILE__) . '/myaccount/addresses.php');
+                require_once(dirname(__FILE__) . '/myaccount/payment-methods.php');
+                require_once(dirname(__FILE__) . '/myaccount/lost-password-confirmation.php');
 
                 /*Order*/
-                require_once(dirname(__FILE__) . '/order/downloads.php');
                 require_once(dirname(__FILE__) . '/order/orders.php');
-                require_once(dirname(__FILE__) . '/order/order-details.php');
+                require_once(dirname(__FILE__) . '/order/downloads.php');
                 require_once(dirname(__FILE__) . '/order/review-order.php');
-                require_once(dirname(__FILE__) . '/order/order-customer-details.php');
+                require_once(dirname(__FILE__) . '/order/order-details.php');
                 require_once(dirname(__FILE__) . '/order/order-received.php');
+                require_once(dirname(__FILE__) . '/order/order-customer-details.php');
 
                 /*Checkout*/
+                require_once(dirname(__FILE__) . '/checkout/form-pay.php');
+                require_once(dirname(__FILE__) . '/checkout/form-login.php');
                 require_once(dirname(__FILE__) . '/checkout/form-coupon.php');
                 require_once(dirname(__FILE__) . '/checkout/form-additional-note.php');
                 require_once(dirname(__FILE__) . '/checkout/form-billing-address.php');
                 require_once(dirname(__FILE__) . '/checkout/form-shipping-address.php');
-                require_once(dirname(__FILE__) . '/checkout/form-login.php');
-                require_once(dirname(__FILE__) . '/checkout/form-pay.php');
 
                 /*Cart*/
+                require_once(dirname(__FILE__) . '/cart/mini-cart.php');
                 require_once(dirname(__FILE__) . '/cart/cart-table.php');
                 require_once(dirname(__FILE__) . '/cart/cart-total.php');
                 require_once(dirname(__FILE__) . '/cart/empty-cart.php');
                 require_once(dirname(__FILE__) . '/cart/empty-cart-button.php');
-                require_once(dirname(__FILE__) . '/cart/mini-cart.php');
 
 
                 /*Global*/
                 require_once(dirname(__FILE__) . '/global/custom-hook.php');
                 require_once(dirname(__FILE__) . '/global/print-notices.php');
+                require_once(dirname(__FILE__) . '/global/wc-get-template.php');
                 require_once(dirname(__FILE__) . '/global/taxonomy-listing.php');
 
                 /*Single Product*/
                 require_once(dirname(__FILE__) . '/single-product/price.php');
                 require_once(dirname(__FILE__) . '/single-product/stock.php');
-
             }
         }
 

@@ -211,9 +211,10 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 
 		$this->end_controls_section();
 
+/* -----Style Section------ */
 		// Form style
 		$this->start_controls_section(
-			'form_style',
+			'section_form_style',
 			array(
 				'label' => esc_html__('Form Style', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -223,20 +224,10 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'form_border',
-				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row-password form.woocommerce-ResetPassword.lost_reset_password',
-				'exclude' => ['color'],
+				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password',
 			]
 		);
-		$this->add_control(
-			'form_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
@@ -261,7 +252,7 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'default' => [
-					'unit' => '0',
+					'unit' => 'px',
 				],
 				'selectors' => [
 					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
@@ -269,8 +260,7 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 			]
 		);
 		$this->add_responsive_control(
-			'
-			argin',
+			'form_margin',
 			[
 				'label' => esc_html__('Margin', 'elementor'),
 				'type' => Controls_Manager::DIMENSIONS,
@@ -284,10 +274,10 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 			]
 		);
 		$this->end_controls_section();
-
+		
 		// Message
 		$this->start_controls_section(
-			'message_style',
+			'section_message_style',
 			array(
 				'label' => esc_html__('Message', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -355,7 +345,7 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 
 		// label
 		$this->start_controls_section(
-			'label_style',
+			'section_label_style',
 			array(
 				'label' => esc_html__('Label', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -419,7 +409,7 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 
 		// Input Fields
 		$this->start_controls_section(
-			'input_style',
+			'section_input_style',
 			array(
 				'label' => esc_html__('Input', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -432,45 +422,6 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 				'label'     => esc_html__('Typography', 'elementor'),
 				'selector'  => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text',
 			)
-		);
-		$this->add_responsive_control(
-			'input_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'input_width',
-			[
-				'label' => __('Width', 'webt'),
-				'type' =>  Controls_Manager::SLIDER,
-				'size_units' => ['px', '%'],
-				'range' => [
-					'px' => [
-						'min' => 0,
-						'max' => 1000,
-						'step' => 5,
-					],
-					'%' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'default' => [
-					'unit' => '%',
-					'size' => 100,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row input.input-text' => 'width: {{SIZE}}{{UNIT}};',
-				],
-			]
 		);
 
 		$this->start_controls_tabs('tabs_input_style');
@@ -495,18 +446,6 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 			[
 				'name' => 'input_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -564,18 +503,6 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text:focus',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text:focus' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -612,6 +539,46 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 		//
 		$this->end_controls_tab();
 		$this->end_controls_tabs();
+		$this->add_responsive_control(
+			'input_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password input.input-text' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'input_width',
+			[
+				'label' => __('Width', 'webt'),
+				'type' =>  Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100,
+				],
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row input.input-text' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 
 		// button style
@@ -630,14 +597,117 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 				'selector'  => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
 			)
 		);
+		$this->start_controls_tabs('button_style_tabs');
+
+		$this->start_controls_tab(
+			'button_style_normal',
+			[
+				'label' => esc_html__('Normal', 'webt'),
+			]
+		);
+		$this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_control(
+			'button_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
-				'exclude' => ['color'],
 			]
 		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->start_controls_tab(
+			'button_style_hover',
+			[
+				'label' => esc_html__('Hover', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color_hover',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color_hover',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border_hover',
+				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow_hover',
+				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover',
+			]
+		);
+		$this->add_control(
+			'button_transition',
+			[
+				'label' => esc_html__('Transition Duration', 'webt'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0.2,
+				],
+				'range' => [
+					'px' => [
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'transition: all {{SIZE}}s',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+		$this->end_controls_tabs();
+
 		$this->add_control(
 			'button_border_radius',
 			[
@@ -678,137 +748,12 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 						'max' => 100,
 					],
 				],
-				'default' => [
-					'unit' => '%',
-					'size' => 100,
-				],
 				'selectors' => [
 					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
-		/////
-		$this->start_controls_tabs('button_style_tabs');
-
-		$this->start_controls_tab(
-			'button_style_normal',
-			[
-				'label' => esc_html__('Normal', 'webt'),
-			]
-		);
-
-		$this->add_control(
-			'button_text_color',
-			[
-				'label' => esc_html__('Text Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color',
-			[
-				'label' => esc_html__('Background Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'button_style_hover',
-			[
-				'label' => esc_html__('Hover', 'webt'),
-			]
-		);
-
-		$this->add_control(
-			'button_text_color_hover',
-			[
-				'label' => esc_html__('Text Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color_hover',
-			[
-				'label' => esc_html__('Background Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color_hover',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'button_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button:hover',
-			]
-		);
-		$this->add_control(
-			'button_transition',
-			[
-				'label' => esc_html__('Transition Duration', 'webt'),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 0.2,
-				],
-				'range' => [
-					'px' => [
-						'max' => 2,
-						'step' => 0.1,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-reset-password form.woocommerce-ResetPassword.lost_reset_password .form-row button' => 'transition: all {{SIZE}}s',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
 		$this->end_controls_section();
 	}
 
@@ -881,4 +826,4 @@ class Widget_MyAccount_Form_Reset_Password extends Widget_Base
 <?php }
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Reset_Password ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Reset_Password());
