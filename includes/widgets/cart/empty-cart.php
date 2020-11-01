@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Empty_Cart_Message_Widget extends Widget_Base
+class Widget_Empty_Cart_Message extends Widget_Base
 {
 
 	/**
@@ -132,4 +132,4 @@ class Widget_Empty_Cart_Message_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Empty_Cart_Message_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Empty_Cart_Message ());

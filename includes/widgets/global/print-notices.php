@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Custom_Notices_Widget extends Widget_Base
+class Widget_Custom_Notices extends Widget_Base
 {
 
 	/**
@@ -121,4 +121,4 @@ class Widget_Custom_Notices_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Custom_Notices_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Custom_Notices ());

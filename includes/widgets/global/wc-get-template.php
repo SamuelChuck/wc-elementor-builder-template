@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_Customhook extends Widget_Base
+class Widget_Template_Path extends Widget_Base
 {
 
 	/**
@@ -23,7 +23,7 @@ class Widget_Customhook extends Widget_Base
 	 */
 	public function get_name()
 	{
-		return 'webt-custom-hook';
+		return 'webt-template_path';
 	}
 
 	/**
@@ -31,7 +31,7 @@ class Widget_Customhook extends Widget_Base
 	 */
 	public function get_title()
 	{
-		return esc_html__('Custom Hook', 'woocommerce');
+		return esc_html__('WC Template Path', 'woocommerce');
 	}
 
 	/**
@@ -55,7 +55,7 @@ class Widget_Customhook extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['webt', 'woocommerce', 'custom', 'hook', 'global'];
+		return ['webt', 'woocommerce', 'custom', 'template', 'path', 'global'];
 	}
 	/**
 	 * Register oEmbed widget controls.
@@ -65,7 +65,7 @@ class Widget_Customhook extends Widget_Base
 		$this->start_controls_section(
 			'section_customhook',
 			[
-				'label' => esc_html__('Custom Hook', 'elementor'),
+				'label' => esc_html__('Template', 'elementor'),
 				'tab' => Controls_Manager::TAB_CONTENT,
 			]
 		);
@@ -73,16 +73,16 @@ class Widget_Customhook extends Widget_Base
 			'wc_customhook_warning',
 			[
 				'type' => Controls_Manager::RAW_HTML,
-				'raw' => esc_html__('Add a custom_hook for your action hook, the plugin or theme action hook. e.g. your_custom_hook. It will be used for do_action( "your_custom_hook" )', 'webt'),
+				'raw' => esc_html__('Add a template_path for your template, the plugin or theme wc template. e.g. myaccount/my-account. It will be used for wc_get_template( "your_template_path" )', 'webt'),
 				'content_classes' => 'elementor-panel-alert elementor-panel-alert-info',
 			]
 		);
 		$this->add_control(
-			'custom_hook',
+			'template_path',
 			[
-				'label' => esc_html__('Custom Hook', 'webt'),
+				'label' => esc_html__('Template Path', 'webt'),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => esc_html('custom_hook'),
+				'placeholder' => esc_html('template_path'),
 			]
 		);
 
@@ -96,16 +96,16 @@ class Widget_Customhook extends Widget_Base
 	{
 		$settings = $this->get_settings_for_display();
 		/**
-		 * Hook: wcf_woocommerce_custom_hook.
+		 * Template: wcf_woocommerce_template_path.
 		 *
 		 */
-		$Hook = strip_tags($settings['custom_hook']);
-		if ($Hook) {
-			do_action("{$Hook}");
+		$template = strip_tags($settings['template_path']);
+		if ($template) {
+			wc_get_template("{$template}.php");
 		} elseif (current_user_can('edit')) {
-			echo '<p> add an action hook </p>';
+			echo '<p> No template path defined </p>';
 		}
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Customhook ());
+//Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Template_Path ());

@@ -555,6 +555,38 @@ if (!defined('ABSPATH')) {
 							</td>
 						</tr>
 
+						<!--Form Edit Address-->
+						<tr valign="top">
+							<th scope="row">
+								<label for="webt_edit_address_template_id">
+									<?php esc_html_e('Edit Address', 'webt') ?>
+								</label>
+							</th>
+							<td>
+								<?php
+								$webt_edit_address_template_id = get_option('webt_edit_address_template_id', '');
+								$edit_address_tpls           = get_posts(array(
+									'post_type' => self::POST_TYPE,
+									'post_status' => 'publish,private',
+									'meta_key' => self::META_KEY,
+									'meta_value' => 'my-account',
+									'posts_per_page' => -1
+								));
+								echo '<select name="webt_edit_address_template_id" id="webt_edit_address_template_id" class="" data-placeholder="' . esc_attr__('Select a template&hellip;', 'webt') . '">';
+								echo '<option value = "" >' . esc_html__('-- None (Use theme layout) --', 'webt') . '</option>';
+								foreach ($edit_address_tpls as $c_tpl) {
+									echo '<option value="' . $c_tpl->ID . '" ' . selected($webt_edit_address_template_id, $c_tpl->ID, false) . '>' . $c_tpl->post_title . '</option>';
+								}
+								echo '</select>';
+								?>
+								<p class="description">
+									<?php
+									if (!empty($webt_edit_address_template_id)) {
+										echo '<a href="' . esc_url($this->get_edit_url($webt_edit_address_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+									} ?>
+								</p>
+							</td>
+						</tr>
 						<!--Payment Methods-->
 						<tr valign="top">
 							<th scope="row">

@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
+class Widget_MyAccount_Edit_Account extends Widget_Base
 {
 
 	/**
@@ -180,18 +180,6 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 			[
 				'name' => 'border',
 				'selector' => '{{WRAPPER}} .woocommerce-EditAccountForm input',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'field_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-EditAccountForm input' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -247,21 +235,8 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .woocommerce-EditAccountForm input.input-text:focus',
-				'exclude' => ['color'],
 			]
 		);
-
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-EditAccountForm input.input-text:focus' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
 		$this->add_control(
 			'input_focus_bg_color',
 			[
@@ -298,7 +273,7 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 
 		// Save changes button
 		$this->start_controls_section(
-			'section_save_account_details_style',
+			'section_button_style',
 			array(
 				'label' => esc_html__('Button', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
@@ -307,42 +282,22 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
-				'name'      => 'save_account_details_typography',
+				'name'      => 'button_typography',
 				'label'     => esc_html__('Typography', 'elementor'),
 				'selector'  => '{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button',
 			)
 		);
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'save_account_details_border',
-				'selector' => '{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button',
-				'exclude' => ['color'],
-			]
-		);
-		$this->add_responsive_control(
-			'save_account_details_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		/////
-		$this->start_controls_tabs('save_account_details_style_tabs');
 
+		$this->start_controls_tabs('button_style_tabs');
 		$this->start_controls_tab(
-			'save_account_details_style_normal',
+			'button_style_normal',
 			[
 				'label' => esc_html__('Normal', 'webt'),
 			]
 		);
 
 		$this->add_control(
-			'save_account_details_text_color',
+			'button_text_color',
 			[
 				'label' => esc_html__('Text Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
@@ -353,7 +308,7 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 		);
 
 		$this->add_control(
-			'save_account_details_bg_color',
+			'button_bg_color',
 			[
 				'label' => esc_html__('Background Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
@@ -363,28 +318,24 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'save_account_details_border_color',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'button_border',
+				'selector' => '{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button',
 			]
 		);
 
 		$this->end_controls_tab();
-
 		$this->start_controls_tab(
-			'save_account_details_style_hover',
+			'button_style_hover',
 			[
 				'label' => esc_html__('Hover', 'webt'),
 			]
 		);
 
 		$this->add_control(
-			'save_account_details_text_color_hover',
+			'button_text_color_hover',
 			[
 				'label' => esc_html__('Text Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
@@ -395,7 +346,7 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 		);
 
 		$this->add_control(
-			'save_account_details_bg_color_hover',
+			'button_bg_color_hover',
 			[
 				'label' => esc_html__('Background Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
@@ -404,20 +355,15 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 				],
 			]
 		);
-
-		$this->add_control(
-			'save_account_details_border_color_hover',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button:hover' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'button_border_hover',
+				'selector' => '{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button:hover',
 			]
 		);
-
 		$this->add_control(
-			'save_account_details_transition',
+			'button_transition',
 			[
 				'label' => esc_html__('Transition Duration', 'webt'),
 				'type' => Controls_Manager::SLIDER,
@@ -437,8 +383,30 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 		);
 
 		$this->end_controls_tab();
-
 		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'button_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'button_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-EditAccountForm .woocommerce-Button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 
 		$this->end_controls_section();
 	}
@@ -457,4 +425,4 @@ class Widget_MyAccount_Edit_Account_Widget extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Edit_Account_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Edit_Account());

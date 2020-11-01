@@ -20,7 +20,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class Widget_Checkout_Coupon_Form_Widget extends Widget_Base
+class Widget_Checkout_Coupon_Form extends Widget_Base
 {
 
     /**
@@ -667,4 +667,4 @@ class Widget_Checkout_Coupon_Form_Widget extends Widget_Base
     }
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Checkout_Coupon_Form_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Checkout_Coupon_Form ());

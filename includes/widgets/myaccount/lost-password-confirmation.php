@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 
-class Widget_MyAccount_Form_Lost_Password_Confirmation_Widget extends Widget_Base
+class Widget_MyAccount_Form_Lost_Password_Confirmation extends Widget_Base
 {
 
 	/**
@@ -233,4 +233,4 @@ class Widget_MyAccount_Form_Lost_Password_Confirmation_Widget extends Widget_Bas
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Lost_Password_Confirmation_Widget());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Form_Lost_Password_Confirmation ());

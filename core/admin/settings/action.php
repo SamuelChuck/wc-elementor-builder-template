@@ -75,6 +75,10 @@ if (isset($_GET['webt_addresses_template_id'])) {
     $options['webt_addresses_template_id'] = $_GET['webt_addresses_template_id'];
 }
 
+if (isset($_GET['webt_edit_address_template_id'])) {
+    $options['webt_edit_address_template_id'] = $_GET['webt_edit_address_template_id'];
+}
+
 if (isset($_GET['webt_payment_methods_template_id'])) {
     $options['webt_payment_methods_template_id'] = $_GET['webt_payment_methods_template_id'];
 }
