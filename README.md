@@ -6,7 +6,7 @@ Tested up to: 5.5.1<br>
 Requires PHP: 7.2<br>
 Stable tag: master<br>
 
-
+<strong>This Plugin is currently under develop ment and some bugs has not been found, if you do find any please report it. Thank you</strong>
 <h3>== Description == </h3><br>
 <p>Effortlessly layout & design your WooCommerce Pages endpoints and more, bring your Woocommerce Elementor store closer to perfection</p>
 <br>
