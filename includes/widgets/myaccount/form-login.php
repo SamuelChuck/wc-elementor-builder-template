@@ -500,18 +500,6 @@ class Widget_MyAccount_Form_Login extends Widget_Base
 			[
 				'name' => 'input_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-login form.woocommerce-form-login input.input-text',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login form.woocommerce-form-login input.input-text' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -569,18 +557,6 @@ class Widget_MyAccount_Form_Login extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .webt-account-form-login form.woocommerce-form-login input.input-text:focus',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .webt-account-form-login form.woocommerce-form-login input.input-text:focus' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 

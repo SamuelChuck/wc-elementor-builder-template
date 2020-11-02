@@ -52,14 +52,14 @@ class Widget_Order_Details extends Widget_Base
 	{
 		return ['webt-checkout'];
 	}
-	
-    /**
-     * Search keywords
-     */
-    public function get_keywords()
-    {
-        return ['webt', 'woocommerce', 'order details', 'orders', 'myaccount'];
-    }
+
+	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'order details', 'orders', 'myaccount'];
+	}
 
 	/**
 	 * Register oEmbed widget controls.
@@ -250,7 +250,6 @@ class Widget_Order_Details extends Widget_Base
 			[
 				'name' => 'product_name_border',
 				'selector' => '{{WRAPPER}} .woocommerce-table--order-details .order_item .product-name',
-				'exclude' => ['color'],
 			]
 		);
 		$this->add_responsive_control(
@@ -295,7 +294,6 @@ class Widget_Order_Details extends Widget_Base
 			[
 				'name' => 'product_total_border',
 				'selector' => '{{WRAPPER}} .woocommerce-table--order-details .order_item .product-total',
-				'exclude' => ['color'],
 			]
 		);
 		$this->add_responsive_control(
@@ -352,7 +350,6 @@ class Widget_Order_Details extends Widget_Base
 			[
 				'name' => 'total_label_border',
 				'selector' => '{{WRAPPER}} .woocommerce-table--order-details tfoot th',
-				'exclude' => ['color'],
 			]
 		);
 		$this->add_responsive_control(
@@ -397,7 +394,6 @@ class Widget_Order_Details extends Widget_Base
 			[
 				'name' => 'total_border',
 				'selector' => '{{WRAPPER}} .woocommerce-table--order-details tfoot td',
-				'exclude' => ['color'],
 			]
 		);
 		$this->add_responsive_control(
@@ -432,14 +428,120 @@ class Widget_Order_Details extends Widget_Base
 				'selector'  => '{{WRAPPER}} .woocommerce-order-details .order-again a.button',
 			)
 		);
+
+		$this->start_controls_tabs('button_style_tabs');
+
+		$this->start_controls_tab(
+			'button_style_normal',
+			[
+				'label' => esc_html__('Normal', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
 		$this->add_group_control(
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'button_border',
 				'selector' => '{{WRAPPER}} .woocommerce-order-details .order-again a.button',
-				'exclude' => ['color'],
 			]
 		);
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .woocommerce-order-details .order-again a.button',
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'button_style_hover',
+			[
+				'label' => esc_html__('Hover', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'button_text_color_hover',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'button_bg_color_hover',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'button_border_hover',
+				'selector' => '{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow_hover',
+				'selector' => '{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover',
+			]
+		);
+		$this->add_control(
+			'button_transition',
+			[
+				'label' => esc_html__('Transition Duration', 'webt'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0.2,
+				],
+				'range' => [
+					'px' => [
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'transition: all {{SIZE}}s',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 		$this->add_control(
 			'button_border_radius',
 			[
@@ -501,127 +603,6 @@ class Widget_Order_Details extends Widget_Base
 			]
 		);
 
-		/////  
-		$this->start_controls_tabs('button_style_tabs');
-
-		$this->start_controls_tab(
-			'button_style_normal',
-			[
-				'label' => esc_html__('Normal', 'webt'),
-			]
-		);
-
-		$this->add_control(
-			'button_text_color',
-			[
-				'label' => esc_html__('Text Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color',
-			[
-				'label' => esc_html__('Background Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'button_box_shadow',
-				'selector' => '{{WRAPPER}} .woocommerce-order-details .order-again a.button',
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->start_controls_tab(
-			'button_style_hover',
-			[
-				'label' => esc_html__('Hover', 'webt'),
-			]
-		);
-
-		$this->add_control(
-			'button_text_color_hover',
-			[
-				'label' => esc_html__('Text Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_bg_color_hover',
-			[
-				'label' => esc_html__('Background Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'button_border_color_hover',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			Group_Control_Box_Shadow::get_type(),
-			[
-				'name' => 'button_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .woocommerce-order-details .order-again a.button:hover',
-			]
-		);
-		$this->add_control(
-			'button_transition',
-			[
-				'label' => esc_html__('Transition Duration', 'webt'),
-				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'size' => 0.2,
-				],
-				'range' => [
-					'px' => [
-						'max' => 2,
-						'step' => 0.1,
-					],
-				],
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-order-details .order-again a.button' => 'transition: all {{SIZE}}s',
-				],
-			]
-		);
-
-		$this->end_controls_tab();
-
-		$this->end_controls_tabs();
 		$this->end_controls_section();
 	}
 
@@ -643,10 +624,10 @@ class Widget_Order_Details extends Widget_Base
 			$order_id = $wp->query_vars[$view_order];
 		} elseif (isset($wp->query_vars[$order_received])) {
 			$order_id = $wp->query_vars[$order_received];
-		} elseif( webt_is_preview_mode()!==false || !webt_is_edit_mode()!==false ) {
+		} elseif (webt_is_preview_mode() !== false || !webt_is_edit_mode() !== false) {
 			$order_id = webt_last_order_id();
 		}
-		
+
 		if (!$order_id) {
 			return;
 		}
@@ -660,4 +641,4 @@ class Widget_Order_Details extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Order_Details ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Order_Details());

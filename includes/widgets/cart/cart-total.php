@@ -53,13 +53,13 @@ class Widget_Cart_Totals extends Widget_Base
         return ['webt-cart'];
     }
 
-	/**
-	 * Search keywords
-	 */
-	public function get_keywords()
-	{
-		return ['webt', 'woocommerce', 'cart', 'total'];
-	}
+    /**
+     * Search keywords
+     */
+    public function get_keywords()
+    {
+        return ['webt', 'woocommerce', 'cart', 'total'];
+    }
 
     /**
      * Register oEmbed widget controls.
@@ -590,14 +590,12 @@ class Widget_Cart_Totals extends Widget_Base
             ]
         );
 
-        $this->add_control(
-            'cart_total_checkout_button_hover_border_color',
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
             [
-                'label' => __('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} .wc-proceed-to-checkout .button.checkout-button:hover' => 'border-color: {{VALUE}}',
-                ],
+                'name' => 'cart_total_checkout_button_border_hover',
+                'label' => __('Button Border', 'webt'),
+                'selector' => '{{WRAPPER}} .wc-proceed-to-checkout .button.checkout-button:hover',
             ]
         );
 
@@ -637,4 +635,4 @@ class Widget_Cart_Totals extends Widget_Base
     }
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Cart_Totals ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Cart_Totals());

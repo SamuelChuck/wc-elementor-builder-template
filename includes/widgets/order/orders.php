@@ -7,7 +7,6 @@ use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
 use Elementor\Group_Control_Typography;
 use WEBT\Plugin;
-use WP_List_Table;
 
 /**
  * WooCommerce Elementor Builder Widget.
@@ -18,7 +17,7 @@ if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
-class Widget_MyAccounr_Orders extends Widget_Base
+class Widget_MyAccount_Orders extends Widget_Base
 {
 
 	/**
@@ -53,13 +52,13 @@ class Widget_MyAccounr_Orders extends Widget_Base
 		return ['webt-myaccount'];
 	}
 
-    /**
-     * Search keywords
-     */
-    public function get_keywords()
-    {
-        return ['webt', 'woocommerce', 'orders', 'myaccount'];
-    }
+	/**
+	 * Search keywords
+	 */
+	public function get_keywords()
+	{
+		return ['webt', 'woocommerce', 'orders', 'myaccount'];
+	}
 	/**
 	 * Register oEmbed widget controls.
 	 */
@@ -96,18 +95,6 @@ class Widget_MyAccounr_Orders extends Widget_Base
 			[
 				'name' => 'heading_border',
 				'selector' => '{{WRAPPER}} .shop_table thead th',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'heading_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .shop_table thead th' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -163,19 +150,9 @@ class Widget_MyAccounr_Orders extends Widget_Base
 			[
 				'name' => 'row_border',
 				'selector' => '{{WRAPPER}} .woocommerce-orders-table__row',
-				'exclude' => ['color'],
 			]
 		);
-		$this->add_control(
-			'row_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-orders-table__row' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
+
 		$this->add_responsive_control(
 			'row_padding',
 			[
@@ -343,26 +320,7 @@ class Widget_MyAccounr_Orders extends Widget_Base
 				'selector'  => '{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a',
 			)
 		);
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'actions_button_border',
-				'selector' => '{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a',
-				'exclude' => ['color'],
-			]
-		);
-		$this->add_responsive_control(
-			'actions_button_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		/////
+
 		$this->start_controls_tabs('actions_button_style_tabs');
 
 		$this->start_controls_tab(
@@ -394,16 +352,14 @@ class Widget_MyAccounr_Orders extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'actions_button_border_color',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'actions_button_border',
+				'selector' => '{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a',
 			]
 		);
+
 		$this->add_control(
 			'actions_button_radius',
 			[
@@ -447,14 +403,11 @@ class Widget_MyAccounr_Orders extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'actions_button_border_color_hover',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a:hover' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'actions_button_border_hover',
+				'selector' => '{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a:hover',
 			]
 		);
 
@@ -491,8 +444,32 @@ class Widget_MyAccounr_Orders extends Widget_Base
 		);
 
 		$this->end_controls_tab();
-
 		$this->end_controls_tabs();
+
+		$this->add_responsive_control(
+			'actions_button_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'actions_button_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-orders-table__row .woocommerce-orders-table__cell-order-actions a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -501,12 +478,13 @@ class Widget_MyAccounr_Orders extends Widget_Base
 	 */
 	protected function render()
 	{
-		$current_page = (new WP_List_Table)->get_pagenum();
+		global $wp;
+		$orders = get_option('woocommerce_myaccount_orders_endpoint');
+		$current_page    = empty($wp->query_vars[$orders]) ? 1 : absint($wp->query_vars[$orders]);
 
 		if (!is_user_logged_in()) {
 			return esc_html__('You need first to be logged in', 'webt');
 		} else {
-			$current_page    = empty($current_page) ? 1 : absint($current_page);
 			$customer_orders = wc_get_orders(
 				apply_filters(
 					'woocommerce_my_account_my_orders_query',
@@ -530,4 +508,4 @@ class Widget_MyAccounr_Orders extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccounr_Orders ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Orders());

@@ -286,7 +286,6 @@ class Widget_Product_Price extends Base_Widget
             [
                 'name' => 'you_save_border',
                 'selector' => '.woocommerce {{WRAPPER}} span.variation-data-discount',
-                'exclude' => ['color'],
             ]
         );
         $this->add_control(
@@ -297,16 +296,6 @@ class Widget_Product_Price extends Base_Widget
                 'size_units' => ['px', '%'],
                 'selectors' => [
                     '.woocommerce {{WRAPPER}} span.variation-data-discount' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-        $this->add_control(
-            'you_save_border_color',
-            [
-                'label' => esc_html__('Border Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '.woocommerce {{WRAPPER}} span.variation-data-discount' => 'border-color: {{VALUE}}',
                 ],
             ]
         );

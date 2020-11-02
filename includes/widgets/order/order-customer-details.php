@@ -102,17 +102,6 @@ class Widget_Order_Customer_Details extends Widget_Base
 			[
 				'name' => 'column_border',
 				'selector' => $this->address_selectors(),
-				'exclude' => ['color'],
-			]
-		);
-		$this->add_control(
-			'column_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					$this->address_selectors() => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 		$this->add_control(

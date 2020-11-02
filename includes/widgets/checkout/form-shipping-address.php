@@ -237,18 +237,6 @@ class Widget_Shipping_Form extends Widget_Base
 			[
 				'name' => 'input_border',
 				'selector' => '{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper input.input-text',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper input.input-text' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -292,21 +280,8 @@ class Widget_Shipping_Form extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper input.input-text:focus',
-				'exclude' => ['color'],
 			]
 		);
-
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper input.input-text:focus' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
 		$this->add_control(
 			'input_focus_bg_color',
 			[
@@ -381,20 +356,9 @@ class Widget_Shipping_Form extends Widget_Base
 			[
 				'name' => 'select_border',
 				'selector' => '{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper select',
-				'exclude' => ['color'],
 			]
 		);
 
-		$this->add_control(
-			'select_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper select' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
 
 		$this->add_control(
 			'select_bg_color',
@@ -436,21 +400,8 @@ class Widget_Shipping_Form extends Widget_Base
 			[
 				'name' => 'select_focus_border',
 				'selector' => '{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper select:focus',
-				'exclude' => ['color'],
 			]
 		);
-
-		$this->add_control(
-			'select_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .shipping_address .woocommerce-shipping-fields__field-wrapper select:focus' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
 		$this->add_control(
 			'select_focus_bg_color',
 			[

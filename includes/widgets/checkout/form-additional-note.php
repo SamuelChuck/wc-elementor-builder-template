@@ -245,18 +245,6 @@ class Widget_Form_Additional_Note_Form extends Widget_Base
 			[
 				'name' => 'input_border',
 				'selector' => '{{WRAPPER}} .woocommerce-additional-fields input, {{WRAPPER}} .woocommerce-additional-fields textarea',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-additional-fields input, {{WRAPPER}} .woocommerce-additional-fields textarea' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -314,18 +302,6 @@ class Widget_Form_Additional_Note_Form extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .woocommerce-additional-fields input:focus, {{WRAPPER}} .woocommerce-additional-fields textarea:focus',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-additional-fields input:focus, {{WRAPPER}} .woocommerce-additional-fields textarea:focus' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 		

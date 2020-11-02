@@ -133,7 +133,7 @@ class Widget_Order_Received extends Widget_Base
 		$this->start_controls_section(
 			'order_received_overview_style',
 			array(
-				'label' => esc_html__('Label', 'webt'),
+				'label' => esc_html__('Order Received Label', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -184,7 +184,7 @@ class Widget_Order_Received extends Widget_Base
 		$this->start_controls_section(
 			'order_received_details_style',
 			array(
-				'label' => esc_html__('Details', 'webt'),
+				'label' => esc_html__('Order Received Details', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -298,7 +298,7 @@ class Widget_Order_Received extends Widget_Base
 		$this->start_controls_section(
 			'order_failed_overview_style',
 			array(
-				'label' => esc_html__('Label', 'webt'),
+				'label' => esc_html__('Order Failed Label', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -349,60 +349,26 @@ class Widget_Order_Received extends Widget_Base
 
 		/* ------------------------------ Button Style ------------------------------ */
 		$this->start_controls_section(
-			'order_failed_button_style',
+			'section_button_style',
 			array(
-				'label' => esc_html__('Button', 'webt'),
+				'label' => esc_html__('Order Failed Button', 'webt'),
 				'tab' => Controls_Manager::TAB_STYLE,
 			)
 		);
-
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			array(
 				'name'      => 'order_failed_button_typography',
-				'label'     => esc_html__('Typography', 'elementor'),
-				'selector'  => '{{WRAPPER}} a.button.woocommerce-button.pay',
+				'selector'  => '{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay',
 			)
 		);
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
+
+		$this->start_controls_tabs('order_failed_button_style_tabs');
+
+		$this->start_controls_tab(
+			'order_failed_button_style_normal',
 			[
-				'name' => 'order_failed_button_border',
-				'selector' => '{{WRAPPER}} a.button.woocommerce-button.pay',
-				'exclude' => ['color'],
-			]
-		);
-		$this->add_control(
-			'order_failed_button_border_radius',
-			[
-				'label' => __('Border Radius', 'webt'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%'],
-				'selectors' => [
-					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'order_failed_button_margin',
-			[
-				'label' => esc_html__('Margin', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-		$this->add_responsive_control(
-			'order_failed_button_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
+				'label' => esc_html__('Normal', 'webt'),
 			]
 		);
 
@@ -412,7 +378,7 @@ class Widget_Order_Received extends Widget_Base
 				'label' => esc_html__('Text Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'color: {{VALUE}}',
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -423,31 +389,156 @@ class Widget_Order_Received extends Widget_Base
 				'label' => esc_html__('Background Color', 'webt'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} a.button.woocommerce-button.pay' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'background-color: {{VALUE}}',
 				],
 			]
 		);
-
-		$this->add_control(
-			'order_failed_button_border_color',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} a.button.woocommerce-button.pay ' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'order_failed_button_border',
+				'selector' => '{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay',
 			]
 		);
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			[
 				'name' => 'order_failed_button_box_shadow',
-				'selector' => '{{WRAPPER}} a.button.woocommerce-button.pay',
+				'selector' => '{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay',
 			]
 		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'order_failed_button_style_hover',
+			[
+				'label' => esc_html__('Hover', 'webt'),
+			]
+		);
+
+		$this->add_control(
+			'order_failed_button_text_color_hover',
+			[
+				'label' => esc_html__('Text Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay:hover' => 'color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'order_failed_button_bg_color_hover',
+			[
+				'label' => esc_html__('Background Color', 'webt'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay:hover' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'order_failed_button_border_hover',
+				'selector' => '{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay:hover',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'order_failed_button_box_shadow_hover',
+				'selector' => '{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay:hover',
+			]
+		);
+		$this->add_control(
+			'order_failed_button_transition',
+			[
+				'label' => esc_html__('Transition Duration', 'webt'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'size' => 0.2,
+				],
+				'range' => [
+					'px' => [
+						'max' => 2,
+						'step' => 0.1,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'transition: all {{SIZE}}s',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+		$this->add_control(
+			'order_failed_button_border_radius',
+			[
+				'label' => __('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%'],
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_failed_button_margin',
+			[
+				'label' => esc_html__('Margin', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_failed_button_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'order_failed_button_width',
+			[
+				'label' => __('Width', 'webt'),
+				'type' =>  Controls_Manager::SLIDER,
+				'size_units' => ['px', '%'],
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 1000,
+						'step' => 5,
+					],
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
+					'size' => 100,
+				],
+				'selectors' => [
+					'{{WRAPPER}} p.woocommerce-notice.woocommerce-notice--error.woocommerce-thankyou-order-failed-actions a.button.woocommerce-button.pay' => 'width: {{SIZE}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
-
 	/**
 	 * Render widget output on the frontend.
 	 */
