@@ -18,7 +18,7 @@ class WEBT_Template extends Library_Document {
 	public static function get_properties() {
 		$properties = parent::get_properties();
 
-		$properties['support_kit'] = true;
+		$properties['support_kit'] = false;
 
 		return $properties;
 	}

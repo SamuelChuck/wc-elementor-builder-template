@@ -26,18 +26,6 @@ if ( ! $order ) {
 $order_items           = $order->get_items( apply_filters( 'woocommerce_purchase_order_item_types', 'line_item' ) );
 $show_purchase_note    = $order->has_status( apply_filters( 'woocommerce_purchase_note_order_statuses', array( 'completed', 'processing' ) ) );
 $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_current_user_id();
-$downloads             = $order->get_downloadable_items();
-$show_downloads        = $order->has_downloadable_item() && $order->is_download_permitted();
-
-if ( $show_downloads ) {
-	wc_get_template(
-		'order/order-downloads.php',
-		array(
-			'downloads'  => $downloads,
-			'show_title' => true,
-		)
-	);
-}
 ?>
 <section class="woocommerce-order-details">
 	<?php do_action( 'woocommerce_order_details_before_order_table', $order ); ?>
