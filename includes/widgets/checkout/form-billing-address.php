@@ -235,18 +235,6 @@ class Widget_Billing_Address_Form extends Widget_Base
 			[
 				'name' => 'border',
 				'selector' => '{{WRAPPER}} .woocommerce-billing-fields input.input-text',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'field_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-billing-fields input.input-text' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -304,20 +292,9 @@ class Widget_Billing_Address_Form extends Widget_Base
 			[
 				'name' => 'input_focus_border',
 				'selector' => '{{WRAPPER}} .woocommerce-billing-fields input.input-text:focus',
-				'exclude' => ['color'],
 			]
 		);
 
-		$this->add_control(
-			'input_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .woocommerce-billing-fields input.input-text:focus' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
 
 		$this->add_control(
 			'input_focus_bg_color',
@@ -406,18 +383,6 @@ class Widget_Billing_Address_Form extends Widget_Base
 			[
 				'name' => 'select_border',
 				'selector' => '{{WRAPPER}} .form-row select, {{WRAPPER}} .form-row .select2-container .select2-selection',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'select_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .form-row select, {{WRAPPER}} .form-row .select2-container .select2-selection' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 
@@ -475,18 +440,6 @@ class Widget_Billing_Address_Form extends Widget_Base
 			[
 				'name' => 'select_focus_border',
 				'selector' => '{{WRAPPER}} .form-row select:focus, {{WRAPPER}} .form-row .select2-container.select2-container--open .select2-selection .select2-selection__rendered',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'select_focus_border_color',
-			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .form-row select:focus, {{WRAPPER}} .form-row .select2-container.select2-container--open .select2-selection .select2-selection__rendered' => 'border-color: {{VALUE}}',
-				],
 			]
 		);
 

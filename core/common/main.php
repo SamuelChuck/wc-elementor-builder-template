@@ -33,7 +33,6 @@ function webt_is_preview_mode()
 	$preview_true = strpos($_SERVER['REQUEST_URI'], 'preview=true');
 
 	if (($preview_true !== false) || ($preview_id !== false) && ($preview_nonce !== false)) {
-		echo $preview_true;
 		return true;
 	}
 	return false;

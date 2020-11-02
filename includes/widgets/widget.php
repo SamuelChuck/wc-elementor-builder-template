@@ -30,8 +30,6 @@ if (!class_exists('Widgets_Registered')) {
         {
             if (class_exists('woocommerce')) {
                 /*My Account*/
-                require_once(dirname(__FILE__) . '/myaccount/login.php');
-                require_once(dirname(__FILE__) . '/myaccount/register.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-login.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-register.php');
                 require_once(dirname(__FILE__) . '/myaccount/form-edit-account.php');
@@ -72,7 +70,6 @@ if (!class_exists('Widgets_Registered')) {
                 /*Global*/
                 require_once(dirname(__FILE__) . '/global/custom-hook.php');
                 require_once(dirname(__FILE__) . '/global/print-notices.php');
-                require_once(dirname(__FILE__) . '/global/wc-get-template.php');
                 require_once(dirname(__FILE__) . '/global/taxonomy-listing.php');
 
                 /*Single Product*/

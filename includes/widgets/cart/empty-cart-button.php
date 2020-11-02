@@ -107,38 +107,6 @@ class Widget_WEBT_Return_To_Shop extends Widget_Base
 			)
 		);
 
-		$this->add_group_control(
-			Group_Control_Border::get_type(),
-			[
-				'name' => 'button_border',
-				'selector' => '{{WRAPPER}} .return-to-shop .button',
-				'exclude' => ['color'],
-			]
-		);
-
-		$this->add_control(
-			'button_border_radius',
-			[
-				'label' => esc_html__('Border Radius', 'webt'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'selectors' => [
-					'{{WRAPPER}} .return-to-shop .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'button_padding',
-			[
-				'label' => esc_html__('Padding', 'elementor'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .return-to-shop .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
 		$this->start_controls_tabs('button_style_tabs');
 
 		$this->start_controls_tab(
@@ -169,15 +137,11 @@ class Widget_WEBT_Return_To_Shop extends Widget_Base
 				],
 			]
 		);
-
-		$this->add_control(
-			'button_border_color',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .return-to-shop .button' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'button_border',
+				'selector' => '{{WRAPPER}} .return-to-shop .button',
 			]
 		);
 
@@ -211,15 +175,11 @@ class Widget_WEBT_Return_To_Shop extends Widget_Base
 				],
 			]
 		);
-
-		$this->add_control(
-			'button_border_color_hover',
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
 			[
-				'label' => esc_html__('Border Color', 'webt'),
-				'type' => Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .return-to-shop .button:hover' => 'border-color: {{VALUE}}',
-				],
+				'name' => 'button_border_hover',
+				'selector' => '{{WRAPPER}} .return-to-shop .button:hover',
 			]
 		);
 
@@ -247,6 +207,29 @@ class Widget_WEBT_Return_To_Shop extends Widget_Base
 
 		$this->end_controls_tabs();
 
+		$this->add_control(
+			'button_border_radius',
+			[
+				'label' => esc_html__('Border Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'selectors' => [
+					'{{WRAPPER}} .return-to-shop .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'button_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .return-to-shop .button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -265,4 +248,4 @@ class Widget_WEBT_Return_To_Shop extends Widget_Base
 	}
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_WEBT_Return_To_Shop ());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_WEBT_Return_To_Shop());
