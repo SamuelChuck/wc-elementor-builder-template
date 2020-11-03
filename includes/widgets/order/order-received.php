@@ -479,7 +479,7 @@ class Widget_Order_Received extends Widget_Base
 		$this->add_control(
 			'order_failed_button_border_radius',
 			[
-				'label' => __('Border Radius', 'webt'),
+				'label' => __('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [

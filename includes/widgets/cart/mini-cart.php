@@ -402,7 +402,7 @@ class Widget_Mini_Cart extends Widget_Base
 		$this->add_responsive_control(
 			'product_image_border_radius',
 			[
-				'label' => __('Border Radius', 'webt-pro'),
+				'label' => __('Radius', 'webt-pro'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
@@ -680,7 +680,7 @@ class Widget_Mini_Cart extends Widget_Base
 		$this->add_responsive_control(
 			'remove_icon_border_radius',
 			[
-				'label' => __('Border Radius', 'webt-pro'),
+				'label' => __('Radius', 'webt-pro'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
@@ -730,7 +730,7 @@ class Widget_Mini_Cart extends Widget_Base
 		$this->add_responsive_control(
 			'remove_icon_border_radius_hover',
 			[
-				'label' => __('Border Radius', 'webt-pro'),
+				'label' => __('Radius', 'webt-pro'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
@@ -833,7 +833,7 @@ class Widget_Mini_Cart extends Widget_Base
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label' => __('Border Radius', 'webt-pro'),
+				'label' => __('Radius', 'webt-pro'),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [

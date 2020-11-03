@@ -196,7 +196,7 @@ class Widget_MyAccount_Edit_Account extends Widget_Base
 		$this->add_control(
 			'input_border_radius',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [
@@ -251,7 +251,7 @@ class Widget_MyAccount_Edit_Account extends Widget_Base
 		$this->add_control(
 			'input_focus_border_radius',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [

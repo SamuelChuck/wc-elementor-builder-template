@@ -235,7 +235,7 @@ class Widget_Payment_Form extends Widget_Base
         $this->add_responsive_control(
             'payment_method_heading_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'webt'),
+                'label' => esc_html__('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -378,7 +378,7 @@ class Widget_Payment_Form extends Widget_Base
         $this->add_responsive_control(
             'payment_method_content_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'webt'),
+                'label' => esc_html__('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -464,7 +464,7 @@ class Widget_Payment_Form extends Widget_Base
         $this->add_responsive_control(
             'payment_method_place_order_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'webt'),
+                'label' => esc_html__('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [

@@ -119,6 +119,34 @@ class Widget_Order_Details extends Widget_Base
 			]
 		);
 		$this->end_controls_section();
+		
+        $this->start_controls_section(
+            'cart_table_style_section',
+            [
+                'label' => __('Table', 'webt'),
+                'tab' => Controls_Manager::TAB_STYLE,
+            ]
+        ); 
+        $this->add_group_control(
+            Group_Control_Border::get_type(),
+            [
+                'name' => 'table_border',
+                'label' => __('Border', 'webt'),
+                'selector' => '{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table',
+            ]
+        ); 
+        $this->add_responsive_control(
+            'table_margin',
+            [
+                'label' => __('margin', 'webt'),
+                'type' => Controls_Manager::DIMENSIONS,
+                'size_units' => ['px', 'em', '%'],
+                'selectors' => [
+                    '{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        ); 
+        $this->end_controls_section();
 
 		/* ------------------------------- Table head ------------------------------- */
 		$this->start_controls_section(
@@ -545,7 +573,7 @@ class Widget_Order_Details extends Widget_Base
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label' => __('Border Radius', 'webt'),
+				'label' => __('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [

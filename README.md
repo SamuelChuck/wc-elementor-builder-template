@@ -72,7 +72,7 @@ Orders endpoints currently supported: <br>
 * WooCommerce Template Builder (Advance) <br>
 * All template is  unique and distinctive <br>
 * 6 WooCommerce Account Form Elementor Elements <br>
-* 7 WooCommerce My Account Elementor Elements <br>
+* 9 WooCommerce My Account Elementor Elements <br>
 * 10 WooCommerce Checkout Elementor Elements <br>
 * 5 WooCommerce Cart Elementor Elements <br>
 * 3 WooCommerce Global Elementor Elements <br>

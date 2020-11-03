@@ -568,7 +568,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 		$this->add_control(
 			'download_file_button_radius',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [
@@ -619,7 +619,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 		$this->add_control(
 			'download_file_button_radius_hover',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [

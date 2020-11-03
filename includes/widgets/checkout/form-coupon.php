@@ -338,7 +338,7 @@ class Widget_Checkout_Coupon_Form extends Widget_Base
         $this->add_control(
             'coupon_input_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -397,7 +397,7 @@ class Widget_Checkout_Coupon_Form extends Widget_Base
         $this->add_control(
             'coupon_input_hover_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -481,7 +481,7 @@ class Widget_Checkout_Coupon_Form extends Widget_Base
         $this->add_control(
             'coupon_button_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -593,7 +593,7 @@ class Widget_Checkout_Coupon_Form extends Widget_Base
         $this->add_control(
             'coupon_button_hover_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [

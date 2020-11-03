@@ -48,7 +48,9 @@ if (!class_exists('Widgets_Registered')) {
                 require_once(dirname(__FILE__) . '/order/downloads.php');
                 require_once(dirname(__FILE__) . '/order/review-order.php');
                 require_once(dirname(__FILE__) . '/order/order-details.php');
+                require_once(dirname(__FILE__) . '/order/order-updates.php');
                 require_once(dirname(__FILE__) . '/order/order-received.php');
+                require_once(dirname(__FILE__) . '/order/order-details-mark.php');
                 require_once(dirname(__FILE__) . '/order/order-customer-details.php');
 
                 /*Checkout*/

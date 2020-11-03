@@ -291,7 +291,7 @@ class Widget_Product_Price extends Base_Widget
         $this->add_control(
             'you_save_border_radius',
             [
-                'label' => esc_html__('Border Radius', 'webt'),
+                'label' => esc_html__('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
