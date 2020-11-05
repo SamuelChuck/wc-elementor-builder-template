@@ -210,7 +210,7 @@ class Widget_WEBT_Return_To_Shop extends Widget_Base
 		$this->add_control(
 			'button_border_radius',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'selectors' => [
 					'{{WRAPPER}} .return-to-shop .button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',

@@ -389,7 +389,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
-					'{{WRAPPER}} tbody tr td td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} tbody tr td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -415,7 +415,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 				'prefix_class' => 'elementor%s-align-',
 				'default'      => '',
 				'selectors' => [
-					'{{WRAPPER}} tbody tr td td' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} tbody tr td' => 'text-align: {{VALUE}}',
 				],
 			]
 		);
@@ -448,6 +448,17 @@ class Widget_MyAccount_Downloads extends Widget_Base
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'product_name_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} tbody tr td.download-product' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->end_controls_section();
 
 		/* --------------------------- Downloads remaining -------------------------- */
@@ -477,6 +488,17 @@ class Widget_MyAccount_Downloads extends Widget_Base
 				],
 			]
 		);
+		$this->add_responsive_control(
+			'download_remaining_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} tbody tr td.download-remaining' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->end_controls_section();
 
 		/* --------------------------------- Expires -------------------------------- */
@@ -503,6 +525,17 @@ class Widget_MyAccount_Downloads extends Widget_Base
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .download-expires' => 'color: {{VALUE}}',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'expires_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} tbody tr td.download-expires' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -568,7 +601,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 		$this->add_control(
 			'download_file_button_radius',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [
@@ -619,7 +652,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 		$this->add_control(
 			'download_file_button_radius_hover',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [
@@ -654,7 +687,7 @@ class Widget_MyAccount_Downloads extends Widget_Base
 		$this->add_responsive_control(
 			'download_file_button_padding',
 			[
-				'label' => esc_html__('Padding', 'elementor'),
+				'label' => esc_html__('Buton Padding', 'elementor'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
@@ -662,7 +695,17 @@ class Widget_MyAccount_Downloads extends Widget_Base
 				],
 			]
 		);
-
+		$this->add_responsive_control(
+			'download_file_padding',
+			[
+				'label' => esc_html__('Padding', 'elementor'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} tbody tr td.download-file' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
 		$this->end_controls_section();
 	}
 

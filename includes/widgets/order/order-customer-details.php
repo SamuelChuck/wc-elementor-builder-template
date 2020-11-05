@@ -101,17 +101,17 @@ class Widget_Order_Customer_Details extends Widget_Base
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'column_border',
-				'selector' => $this->address_selectors(),
+				'selector' => '{{WRAPPER}} .woocommerce-customer-details .woocommerce-column',
 			]
 		);
 		$this->add_control(
 			'column_border_radius',
 			[
-				'label' => esc_html__('Border Radius', 'webt'),
+				'label' => esc_html__('Radius', 'webt'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%'],
 				'selectors' => [
-					$this->address_selectors() => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-column' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -122,7 +122,7 @@ class Widget_Order_Customer_Details extends Widget_Base
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
-					$this->address_selectors() => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-column' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -133,7 +133,7 @@ class Widget_Order_Customer_Details extends Widget_Base
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', 'em'],
 				'selectors' => [
-					$this->address_selectors() => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-column' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -213,7 +213,7 @@ class Widget_Order_Customer_Details extends Widget_Base
 				],
 
 				'selectors' => [
-					$this->address_selectors() => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -511,23 +511,6 @@ class Widget_Order_Customer_Details extends Widget_Base
 <?php
 			wc_get_template('order/order-details-customer.php', array('order' => $order));
 		}
-	}
-
-	/**
-	 * address_selectors
-	 *
-	 * @return string
-	 */
-	private function address_selectors()
-	{
-		$show_shipping = !wc_ship_to_billing_address_only();
-
-		if ($show_shipping) {
-			$address_selectors = '{{WRAPPER}} .woocommerce-customer-details .woocommerce-columns .woocommerce-column';
-		} else {
-			$address_selectors = '{{WRAPPER}} .woocommerce-customer-details';
-		}
-		return $address_selectors;
 	}
 }
 Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Order_Customer_Details());

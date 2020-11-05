@@ -259,7 +259,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'product_image_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -651,7 +651,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'cart_product_remove_button_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -716,7 +716,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'cart_product_remove_button_hover_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -805,7 +805,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'cart_update_button_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -882,7 +882,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'cart_update_button_hover_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -960,7 +960,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'cart_continue_shopping_button_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
@@ -1038,7 +1038,7 @@ class Widget_Cart_Table extends Widget_Base
         $this->add_responsive_control(
             'cart_continue_shopping_button_hover_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [

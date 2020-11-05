@@ -495,7 +495,7 @@ class Widget_Cart_Totals extends Widget_Base
         $this->add_control(
             'cart_total_checkout_button_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
@@ -602,7 +602,7 @@ class Widget_Cart_Totals extends Widget_Base
         $this->add_control(
             'cart_total_checkout_button_hover_border_radius',
             [
-                'label' => __('Border Radius', 'webt'),
+                'label' => __('Radius', 'webt'),
                 'type' => Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
