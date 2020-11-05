@@ -244,6 +244,16 @@ class Widget_Order_Updates extends Widget_Base
 				],
 			]
 		);
+		$this->add_control(
+			'message_container_bg_color',
+			[
+				'label' => esc_html__('Background Color', 'elementor'),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} li.woocommerce-OrderUpdate.comment.note' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
 		$this->add_responsive_control(
 			'message_container_text_align',
 			[
@@ -330,6 +340,7 @@ class Widget_Order_Updates extends Widget_Base
 		$this->add_control(
 			'message_meta_color',
 			[
+				'label'        => esc_html__('Color', 'elementor'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .woocommerce-OrderUpdate-meta.meta' => 'color: {{VALUE}}',
@@ -492,6 +503,9 @@ class Widget_Order_Updates extends Widget_Base
 	{
 		$order_id = webt_order_id();
 		$order = wc_get_order($order_id); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		if (!$order) {
+			return;
+		}
 		$notes = $order->get_customer_order_notes();
 
 		if ($notes) : ?>

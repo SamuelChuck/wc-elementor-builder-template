@@ -119,34 +119,82 @@ class Widget_Order_Details extends Widget_Base
 			]
 		);
 		$this->end_controls_section();
-		
-        $this->start_controls_section(
-            'cart_table_style_section',
-            [
-                'label' => __('Table', 'webt'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            ]
-        ); 
-        $this->add_group_control(
-            Group_Control_Border::get_type(),
-            [
-                'name' => 'table_border',
-                'label' => __('Border', 'webt'),
-                'selector' => '{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table',
-            ]
-        ); 
-        $this->add_responsive_control(
-            'table_margin',
-            [
-                'label' => __('margin', 'webt'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        ); 
-        $this->end_controls_section();
+
+		$this->start_controls_section(
+			'order_table_container_style_section',
+			[
+				'label' => __('Table Container', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'order_table_container_border',
+				'selector' => '{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table',
+			]
+		);
+		$this->add_responsive_control(
+			'order_table_container_border_radius',
+			[
+				'label' => __('Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_table_container_margin',
+			[
+				'label' => __('Margin', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-order-details .woocommerce-order-details__table' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'order_table_style_section',
+			[
+				'label' => __('Table', 'webt'),
+				'tab' => Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'order_table_border',
+				'selector' => '{{WRAPPER}} .woocommerce-table.woocommerce-table--order-details.shop_table.order_details',
+			]
+		);
+		$this->add_responsive_control(
+			'order_table_border_radius',
+			[
+				'label' => __('Radius', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-table.woocommerce-table--order-details.shop_table.order_details' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->add_responsive_control(
+			'order_table_padding',
+			[
+				'label' => __('Padding', 'webt'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', 'em', '%'],
+				'selectors' => [
+					'{{WRAPPER}} .woocommerce-table.woocommerce-table--order-details.shop_table.order_details' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+		$this->end_controls_section();
 
 		/* ------------------------------- Table head ------------------------------- */
 		$this->start_controls_section(
@@ -159,7 +207,7 @@ class Widget_Order_Details extends Widget_Base
 		$this->add_control(
 			'order_table_heading_text_color',
 			[
-				'label' => __('Color', 'webt'),
+				'label' => esc_html__('Color', 'elementor'),				
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .woocommerce-table--order-details tr th' => 'color: {{VALUE}}',

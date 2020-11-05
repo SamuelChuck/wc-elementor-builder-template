@@ -164,6 +164,7 @@ class Widget_Order_Details_Mark extends Widget_Base
 		$this->add_control(
 			'mark_color',
 			[
+				'label'        => esc_html__('Color', 'elementor'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .woocommerce-order-details__mark mark' => 'color: {{VALUE}}',
@@ -229,7 +230,7 @@ class Widget_Order_Details_Mark extends Widget_Base
 		$order_id = webt_order_id();
 		$order = wc_get_order($order_id); // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 
-		if (empty($order) || !$order) {
+		if (!$order) {
 			return;
 		} ?>
 		<p class="woocommerce-order-details__mark">

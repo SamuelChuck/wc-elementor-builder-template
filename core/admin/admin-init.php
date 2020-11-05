@@ -23,11 +23,11 @@ class WEBT_Admin_Init
 	 */
 	const POST_TYPE = Source_Local::POST_TYPE;
 	const TAXONOMY_SLUG = Source_Local::TAXONOMY_SLUG;
-	const META_KEY = '_'.self::TAXONOMY_SLUG;
+	const META_KEY = '_' . self::TAXONOMY_SLUG;
 	const MK_EDIT_MODE = '_webt_edit_mode';
 	const ELEMENTOR_LIBRARY = 'edit.php?post_type=elementor_library';
-	const POST_SLUG = 'edit.php?post_type='.self::POST_TYPE;
-	const ADMIN_SCREEN = 'edit-'.self::POST_TYPE;
+	const POST_SLUG = 'edit.php?post_type=' . self::POST_TYPE;
+	const ADMIN_SCREEN = 'edit-' . self::POST_TYPE;
 
 	private static $template_types = [];
 	private $post_type_object;
@@ -129,14 +129,14 @@ class WEBT_Admin_Init
 		add_filter('display_post_states', [$this, 'remove_elementor_state'], 11, 2);
 
 		// Template type column.
-		add_action('manage_'.self::POST_TYPE.'_posts_columns', [$this, 'admin_columns_headers']);
-		add_action('manage_'.self::POST_TYPE.'_posts_custom_column', [$this, 'admin_columns_content'], 10, 2);
+		add_action('manage_' . self::POST_TYPE . '_posts_columns', [$this, 'admin_columns_headers']);
+		add_action('manage_' . self::POST_TYPE . '_posts_custom_column', [$this, 'admin_columns_content'], 10, 2);
 
 		//Loads admin scripts
 		add_action('admin_enqueue_scripts', array($this, 'enqueue_style_script',));
 
 		// Shows Shop Builder Navigation Tabs.
-		add_filter('views_edit-'.self::POST_TYPE, [$this, 'admin_print_tabs']);
+		add_filter('views_edit-' . self::POST_TYPE, [$this, 'admin_print_tabs']);
 
 		/**
 		 * Admin Actions
@@ -169,7 +169,7 @@ class WEBT_Admin_Init
 			self::POST_SLUG
 		);
 	}
-	
+
 	/**
 	 * add_backword_compactabality
 	 * runs Sql Query to rename post_type and metadata
@@ -226,7 +226,7 @@ class WEBT_Admin_Init
 		$post = get_post();
 		return !!get_post_meta($post->ID, '_elementor_edit_mode', true);
 	}
-	
+
 	/**
 	 * current_user_can_edit
 	 *
@@ -263,11 +263,11 @@ class WEBT_Admin_Init
 	 *
 	 * @param  mixed $post_id
 	 * @param  mixed $post
-	 * @return void
+	 * @param \WP_Post $post    The current post object.
 	 */
 	public function do_on_post_save($post_id, \WP_Post $post)
 	{
-		if ((self::POST_TYPE !== $post->post_type || self::get_template_type($post_id))) {
+		if ((self::POST_TYPE !== $post->post_type) || self::get_template_type($post_id)) {
 			return;
 		}
 		$this->save_item_type($post_id, 'none');
@@ -304,7 +304,7 @@ class WEBT_Admin_Init
 		$url_args = ['post_type' => self::POST_TYPE];
 		$baseurl = add_query_arg($url_args, admin_url('edit.php'));
 		$nav_tab_types = Source_Local::nav_tab_taxonomy();
-		?>
+?>
 		<div id="woocomerce-builder-template-library-tabs-wrapper" class="nav-tab-wrapper">
 			<a class="nav-tab<?php echo esc_attr($active_class); ?>" href="<?php echo esc_url($baseurl); ?>">
 				<?php
@@ -326,8 +326,8 @@ class WEBT_Admin_Init
 			?>
 		</div>
 		<?php
-		if (!empty($current_type)) : 
-			require WEBT_CORE_PATH.'/admin/settings/advance.php';
+		if (!empty($current_type)) :
+			require WEBT_CORE_PATH . '/admin/settings/advance.php';
 		endif;
 
 		return $views;
@@ -355,9 +355,10 @@ class WEBT_Admin_Init
 	 * @param  mixed $post_id
 	 * @return void
 	 */
-	public function admin_columns_content($column_name, $post_id){
+	public function admin_columns_content($column_name, $post_id)
+	{
 		//Add Admin Column 
-		require(WEBT_CORE_PATH.'admin/settings/column.php');
+		require(WEBT_CORE_PATH . 'admin/settings/column.php');
 	}
 
 	/**
@@ -369,7 +370,7 @@ class WEBT_Admin_Init
 	public function print_admin_column_type($type)
 	{
 
-		$admin_filter_url = admin_url(self::POST_SLUG.'&'.self::TAXONOMY_SLUG.'='.$type);
+		$admin_filter_url = admin_url(self::POST_SLUG . '&' . self::TAXONOMY_SLUG . '=' . $type);
 
 		printf('<a href="%s">%s</a>', $admin_filter_url, self::template_label_type($type));
 	}
@@ -418,12 +419,12 @@ class WEBT_Admin_Init
 	public function enqueue_style_script()
 	{
 		wp_enqueue_style('wp-color-picker');
-		wp_enqueue_style('webt-modal-style', WEBT_ASSETS_URL.'css/modal.css');
-		wp_enqueue_style('webt-admin-style', WEBT_ASSETS_URL.'css/admin.css');
+		wp_enqueue_style('webt-modal-style', WEBT_ASSETS_URL . 'css/modal.css');
+		wp_enqueue_style('webt-admin-style', WEBT_ASSETS_URL . 'css/admin.css');
 
 		wp_enqueue_script('wp-color-picker');
-		wp_enqueue_script('webt-admin-script', WEBT_ASSETS_URL.'js/admin.js', [], WEBT_VERSION, false);
-		wp_enqueue_script('webt-modal-script', WEBT_ASSETS_URL.'js/modal.js', [], WEBT_VERSION, true);
+		wp_enqueue_script('webt-admin-script', WEBT_ASSETS_URL . 'js/admin.js', [], WEBT_VERSION, false);
+		wp_enqueue_script('webt-modal-script', WEBT_ASSETS_URL . 'js/modal.js', [], WEBT_VERSION, true);
 	}
 
 	/**
@@ -437,9 +438,9 @@ class WEBT_Admin_Init
 	 */
 	public function enqueue_new_template_scripts()
 	{
-		wp_enqueue_script('webt-new-template', WEBT_ASSETS_URL.'js/new-template.js', [], WEBT_VERSION, true);
+		wp_enqueue_script('webt-new-template', WEBT_ASSETS_URL . 'js/new-template.js', [], WEBT_VERSION, true);
 	}
-	
+
 	/**
 	 * add_template_on_head
 	 *
@@ -447,7 +448,7 @@ class WEBT_Admin_Init
 	 */
 	public function add_template_on_head()
 	{
-		require WEBT_CORE_PATH.'admin/settings/popup.php';
+		require WEBT_CORE_PATH . 'admin/settings/popup.php';
 	}
 
 	/**
@@ -478,7 +479,7 @@ class WEBT_Admin_Init
 		if (!current_user_can($post_type_object
 			->cap
 			->edit_posts)) {
-			wp_die('<h1>'.esc_html__('No Permission Granted.', 'webt').'</h1><p>'.esc_html__('Sorry, you are not allowed to carry out this action.', 'webt').'</p>', 403);
+			wp_die('<h1>' . esc_html__('No Permission Granted.', 'webt') . '</h1><p>' . esc_html__('Sorry, you are not allowed to carry out this action.', 'webt') . '</p>', 403);
 		}
 
 		if (empty($_GET['template_type'])) {
@@ -491,21 +492,12 @@ class WEBT_Admin_Init
 
 		$post_data = isset($_GET['post_data']) ? $_GET['post_data'] : [];
 		$meta = [];
-		/**
-		 * Create new post meta data.
-		 *
-		 * Filters the meta data of any new post created.
-		 *
-		 * @since 2.0.0
-		 *
-		 * @param array $meta Post meta data.
-		 */
 		$meta = apply_filters('webt_create_new_post_meta', $meta);
 		$post_data['post_type'] = $post_type; //@var mixed $post_data
 
 		$this->create($type, $post_data, $meta);
 
-		wp_redirect($this->get_edit_url($type));
+		wp_redirect($this->get_edit_url());
 
 		exit;
 	}
@@ -520,7 +512,7 @@ class WEBT_Admin_Init
 		check_admin_referer('webt_nonce');
 		$current_url = $_GET['current_url'];
 
-		require(WEBT_CORE_PATH.'admin/settings/action.php');
+		require(WEBT_CORE_PATH . 'admin/settings/action.php');
 
 		$this->update_woo_options($options);
 		wp_safe_redirect($current_url);
@@ -560,7 +552,7 @@ class WEBT_Admin_Init
 		$class = $this->get_type($type, false);
 
 		if (!$class) {
-			return new \WP_Error( 500, sprintf( 'Type %s does not exist.', $type ) );
+			return new \WP_Error(500, sprintf('Type %s does not exist.', $type));
 		}
 
 		if (empty($post_data['post_title'])) {
@@ -573,12 +565,11 @@ class WEBT_Admin_Init
 				);
 			}
 			$update_title = true;
-
 		}
 
-		$meta_data[ self::MK_EDIT_MODE ] = 'builder';
-		
-		$meta_data[ self::META_KEY ] = $type;//save the type as it is
+		$meta_data[self::MK_EDIT_MODE] = 'builder';
+
+		$meta_data[self::META_KEY] = $type; //save the type as it is
 
 		$post_data['meta_input'] = $meta_data;
 
@@ -586,7 +577,7 @@ class WEBT_Admin_Init
 
 		if (!empty($update_title)) {
 			$post_data['ID'] = $post_id;
-			$post_data['post_title'] .= ' #'.$post_id;
+			$post_data['post_title'] .= ' #' . $post_id;
 
 			// The meta doesn't need update.
 			unset($post_data['meta_input']);
@@ -669,19 +660,24 @@ class WEBT_Admin_Init
 		return $this->main_id;
 	}
 
-	
+
 	/**
 	 * get_edit_url
 	 *
-	 * @param  mixed $postID
-	 * @return string
+	 * @return void
 	 */
-	public function get_edit_url( $postID = '')
+	public function get_edit_url()
 	{
-		$post_id = (empty($postID)) ? $this->get_main_id() : $postID;
-		$url = add_query_arg(['post' => $post_id, 'action' => 'elementor'], admin_url('post.php'));
+		$url = add_query_arg(
+			[
+				'post' => $this->get_main_id(),
+				'action' => 'elementor',
+			],
+			admin_url( 'post.php' )
+		);
 
 		return $url;
+
 	}
 
 	/**
@@ -723,7 +719,7 @@ class WEBT_Admin_Init
 			return;
 		}
 
-				
+
 		if (empty($gqv_library_type)) {
 			$post_counts = (array) wp_count_posts(self::POST_TYPE);
 			unset($post_counts['auto-draft']);
@@ -759,10 +755,10 @@ class WEBT_Admin_Init
 				</a>
 			</div>
 		</div>
-		<?php
+<?php
 
 	}
-	
+
 	/**
 	 * get_post
 	 *
@@ -772,15 +768,14 @@ class WEBT_Admin_Init
 	{
 		$args = array(
 			'post_type' => self::POST_TYPE,
-			'posts_per_page' => 1,
+			'posts_per_page' => 1
 		);
-		$_this_post = wp_get_recent_posts($args, OBJECT);
-		if ( empty($_this_post[0])){
-			return $_this_post;
-		}else{
-			return $_this_post[0];
+		$post = wp_get_recent_posts($args, OBJECT);
+		if (!$post) {
+			return;
+		} else {
+			return $post[0];
 		}
-		
 	}
 
 	/**
