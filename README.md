@@ -71,13 +71,13 @@ Orders endpoints currently supported: <br>
 
 * WooCommerce Template Builder (Advance) <br>
 * All template is  unique and distinctive <br>
-* 6 WooCommerce Account Form Elementor Elements <br>
+* 7 WooCommerce Account Form Elementor Elements <br>
 * 9 WooCommerce My Account Elementor Elements <br>
 * 10 WooCommerce Checkout Elementor Elements <br>
 * 5 WooCommerce Cart Elementor Elements <br>
 * 3 WooCommerce Global Elementor Elements <br>
 * 2 WooCommerce Product Elementor Elements <br>
-* 33 Total WooCommerce Elementor Elements <br>
+* 34 Total WooCommerce Elementor Elements <br>
 
 Contributors & Developers <br>
 “WooCommerce Elementor Builder Template” is open source software. The following people have contributed to this plugin. <br>
