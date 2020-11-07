@@ -2,3 +2,4 @@
                              Initial Release
                     Added Woocommerce Mini Cart Table
         Added 2 new widgets: Order Updates & Order Details Mark.
+Fixed Fatal error: Cannot declare class Elementor\Modules\Library\Module, because the name is already in use 

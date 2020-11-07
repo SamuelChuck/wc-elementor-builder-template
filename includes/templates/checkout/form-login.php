@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Checkout login form
  *
@@ -15,13 +16,14 @@
  * @version 3.8.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
 
-if ( is_user_logged_in() || 'no' === get_option( 'woocommerce_enable_checkout_login_reminder' ) ) {
+if (is_user_logged_in() || 'no' === get_option('woocommerce_enable_checkout_login_reminder')) {
 	return;
 }
-
 ?>
 <div class="woocommerce webt_checkout_login_page">
-	<?php do_action('webt_woocommerce_checkout_content_form_login');?>
+
+	<?php do_action('webt_woocommerce_checkout_content_form_login'); ?>
+
 </div>

@@ -2,23 +2,23 @@
 
 namespace WEBT;
 
-use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Border;
-use Elementor\Group_Control_Box_Shadow;
 use Elementor\Group_Control_Typography;
+use Elementor\Widget_Base;
 use WEBT\Plugin;
 
 /**
  * WooCommerce Elementor Builder Widget.
  *
  * @package webt
+ * 
  */
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly.
 }
 
-class Widget_Payment_Form extends Widget_Base
+class Widget_MyAccount_Add_Payment_Methods extends Widget_Base
 {
 
     /**
@@ -26,7 +26,7 @@ class Widget_Payment_Form extends Widget_Base
      */
     public function get_name()
     {
-        return 'webt-checkout-payment';
+        return 'webt-add-payment-method-form';
     }
 
     /**
@@ -34,7 +34,7 @@ class Widget_Payment_Form extends Widget_Base
      */
     public function get_title()
     {
-        return esc_html__('Checkout Payment', 'webt');
+        return esc_html__('Add Payment Method Form', 'webt');
     }
 
     /**
@@ -50,7 +50,7 @@ class Widget_Payment_Form extends Widget_Base
      */
     public function get_categories()
     {
-        return ['webt-checkout'];
+        return ['webt-myaccount'];
     }
 
     /**
@@ -58,7 +58,7 @@ class Widget_Payment_Form extends Widget_Base
      */
     public function get_keywords()
     {
-        return ['webt', 'woocommerce', 'checkout', 'pay', 'payment', 'form'];
+        return ['webt', 'woocommerce', 'myaccount', 'checkout', 'payment-method', 'add'];
     }
 
     /**
@@ -66,102 +66,6 @@ class Widget_Payment_Form extends Widget_Base
      */
     protected function _register_controls()
     {
-        $this->start_controls_section(
-            'content_section',
-            [
-                'label' => __('Content', 'webt'),
-                'tab' => Controls_Manager::TAB_CONTENT,
-            ]
-        );
-
-        $this->add_control(
-            'payment_form_heading',
-            [
-                'label' => __('Heading', 'webt'),
-                'type' => Controls_Manager::TEXTAREA,
-                'dynamic' => [
-                    'active' => true,
-                ],
-                'placeholder' => __('Enter your title', 'webt'),
-                'default' => __('Payment Method', 'webt'),
-            ]
-        );
-
-        $this->end_controls_section();
-
-        // Heading
-        $this->start_controls_section(
-            'payment_method_form_heading_style',
-            array(
-                'label' => __('Heading', 'webt'),
-                'tab' => Controls_Manager::TAB_STYLE,
-            )
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            array(
-                'name' => 'payment_method_form_heading_typography',
-                'label' => __('Typography', 'webt'),
-                'selector' => '{{WRAPPER}} h3.payment-form-heading',
-            )
-        );
-
-        $this->add_control(
-            'payment_method_form_heading_color',
-            [
-                'label' => __('Color', 'webt'),
-                'type' => Controls_Manager::COLOR,
-                'selectors' => [
-                    '{{WRAPPER}} h3.payment-form-heading' => 'color: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'payment_method_form_heading_margin',
-            [
-                'label' => __('Margin', 'webt'),
-                'type' => Controls_Manager::DIMENSIONS,
-                'size_units' => ['px', 'em', '%'],
-                'selectors' => [
-                    '{{WRAPPER}} h3.payment-form-heading' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                ],
-            ]
-        );
-
-        $this->add_responsive_control(
-            'payment_method_form_heading_align',
-            [
-                'label' => __('Alignment', 'webt'),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'left' => [
-                        'title' => __('Left', 'webt'),
-                        'icon' => 'fa fa-align-left',
-                    ],
-                    'center' => [
-                        'title' => __('Center', 'webt'),
-                        'icon' => 'fa fa-align-center',
-                    ],
-                    'right' => [
-                        'title' => __('Right', 'webt'),
-                        'icon' => 'fa fa-align-right',
-                    ],
-                    'justify' => [
-                        'title' => __('Justified', 'webt'),
-                        'icon' => 'fa fa-align-justify',
-                    ],
-                ],
-                'default' => 'left',
-                'selectors' => [
-                    '{{WRAPPER}} h3.payment-form-heading' => 'text-align: {{VALUE}}',
-                ],
-            ]
-        );
-
-        $this->end_controls_section();
-
         // Payment
         $this->start_controls_section(
             'payment_method_style',
@@ -197,13 +101,12 @@ class Widget_Payment_Form extends Widget_Base
                 'label' => __('Background Color', 'webt'),
                 'type' => Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} #payment' => 'background-color: {{VALUE}}',
+                    '{{WRAPPER}} #payment' => 'background-color: {{VALUE}} !important',
                 ],
             ]
         );
 
         $this->end_controls_section();
-
         // Payment Method Heading
         $this->start_controls_section(
             'payment-method_heading_style',
@@ -403,7 +306,7 @@ class Widget_Payment_Form extends Widget_Base
         $this->start_controls_section(
             'payment_method_place_order_style',
             array(
-                'label' => __('Place Order Button', 'webt'),
+                'label' => __('Add Payment Method Button', 'webt'),
                 'tab' => Controls_Manager::TAB_STYLE,
             )
         );
@@ -549,21 +452,8 @@ class Widget_Payment_Form extends Widget_Base
      */
     protected function render()
     {
-
-        $settings = $this->get_settings_for_display();
-
-        if (!is_ajax()) {
-            do_action('woocommerce_review_order_before_payment');
-        } ?>
-
-        <h3 class="payment-form-heading"><?php echo $settings['payment_form_heading']; ?></h3>
-
-<?php woocommerce_checkout_payment();
-
-        if (!is_ajax()) {
-            do_action('woocommerce_review_order_after_payment');
-        }
+        wc_get_template('myaccount/add-payment-method-form.php');
     }
 }
 
-Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_Payment_Form());
+Plugin::elementor_instance()->widgets_manager->register_widget_type(new Widget_MyAccount_Add_Payment_Methods());

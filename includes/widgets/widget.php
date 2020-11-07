@@ -41,6 +41,7 @@ if (!class_exists('Widgets_Registered')) {
                 require_once(dirname(__FILE__) . '/myaccount/dashboard.php');
                 require_once(dirname(__FILE__) . '/myaccount/addresses.php');
                 require_once(dirname(__FILE__) . '/myaccount/payment-methods.php');
+                require_once(dirname(__FILE__) . '/myaccount/form-add-payment-method.php');
                 require_once(dirname(__FILE__) . '/myaccount/lost-password-confirmation.php');
 
                 /*Order*/
@@ -67,7 +68,6 @@ if (!class_exists('Widgets_Registered')) {
                 require_once(dirname(__FILE__) . '/cart/cart-total.php');
                 require_once(dirname(__FILE__) . '/cart/empty-cart.php');
                 require_once(dirname(__FILE__) . '/cart/empty-cart-button.php');
-
 
                 /*Global*/
                 require_once(dirname(__FILE__) . '/global/custom-hook.php');

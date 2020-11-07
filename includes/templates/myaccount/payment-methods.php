@@ -21,7 +21,6 @@ defined( 'ABSPATH' ) || exit;
 
 $saved_methods = wc_get_customer_saved_methods_list( get_current_user_id() );
 $has_methods   = (bool) $saved_methods;
-$types         = wc_get_account_payment_methods_types();
 
 do_action( 'woocommerce_before_account_payment_methods', $has_methods ); ?>
 
@@ -45,7 +44,3 @@ do_action( 'woocommerce_before_account_payment_methods', $has_methods ); ?>
 <?php endif; ?>
 
 <?php do_action( 'woocommerce_after_account_payment_methods', $has_methods ); ?>
-
-<?php if ( WC()->payment_gateways->get_available_payment_gateways() ) : ?>
-	<a class="button" href="<?php echo esc_url( wc_get_endpoint_url( 'add-payment-method' ) ); ?>"><?php esc_html_e( 'Add payment method', 'woocommerce' ); ?></a>
-<?php endif; ?>

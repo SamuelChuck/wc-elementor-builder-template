@@ -27,12 +27,12 @@ if (isset($_GET['webt_order_pay_template_id'])) {
     $options['webt_order_pay_template_id'] = $_GET['webt_order_pay_template_id'];
 }
 
-if (isset($_GET['webt_add_payment_method_template_id'])) {
-    $options['webt_add_payment_method_template_id'] = $_GET['webt_add_payment_method_template_id'];
-}
-
 if (isset($_GET['webt_order_received_template_id'])) {
     $options['webt_order_received_template_id'] = $_GET['webt_order_received_template_id'];
+}
+
+if (isset($_GET['webt_add_payment_method_template_id'])) {
+    $options['webt_add_payment_method_template_id'] = $_GET['webt_add_payment_method_template_id'];
 }
 
 if (isset($_GET['webt_myaccount_template_id'])) {

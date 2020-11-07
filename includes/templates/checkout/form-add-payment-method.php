@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Add payment method form form
  *
@@ -15,14 +16,10 @@
  * @version 3.4.0
  */
 
-defined( 'ABSPATH' ) || exit;
+defined('ABSPATH') || exit;
+?>
+<div class="woocommerce webt_woocommerce_add_payment_method_page">
 
-$available_gateways = WC()->payment_gateways->get_available_payment_gateways();
+	<?php do_action('webt_woocommerce_add_payment_method_content'); ?>
 
-if ( $available_gateways ) : ?>
-	<div class="woocommerce webt_woocommerce_add_payment_method_page">
-    	<?php do_action('webt_woocommerce_add_payment_method_content');?>
-    </div>
-<?php else : ?>
-	<p class="woocommerce-notice woocommerce-notice--info woocommerce-info"><?php esc_html_e( 'New payment methods can only be added during checkout. Please contact us if you require assistance.', 'woocommerce' ); ?></p>
-<?php endif; ?>
+</div>

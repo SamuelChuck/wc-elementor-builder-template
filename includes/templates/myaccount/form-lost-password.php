@@ -19,13 +19,10 @@ defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_lost_password_form' );
 ?>
-
 <div class="woocommerce webt_lost_password_page">
 	<?php
-
 		do_action( 'webt_woocommerce_lost_password_content' );
 	?>
 </div>
-
 <?php
 do_action( 'woocommerce_after_lost_password_form' );

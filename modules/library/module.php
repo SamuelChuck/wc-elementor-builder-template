@@ -51,7 +51,6 @@ class Module extends BaseModule {
 	 */
 	public function __construct() {
 		$this->include();
-		if(!is_admin())
 		Plugin::$instance->documents->register_document_type( 'template', Documents\WEBT_Template::get_class_full_name() );
 	}
 }

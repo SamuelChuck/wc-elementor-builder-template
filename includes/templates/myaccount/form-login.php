@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Login Form
  *
@@ -15,17 +16,20 @@
  * @version 4.1.0
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly
 }
-
 ?>
 <div class="woocommerce webt-woocommerce-myaccount-login-page">
-	<?php //do_action( 'woocommerce_before_customer_login_form' ); ?>
-	<div id="customer_login-www">
-	<?php 
-	do_action( 'webt_woocommerce_account_content_form_login' );
-	?>
+
+	<?php do_action('woocommerce_before_customer_login_form'); ?>
+
+	<div id="webt-account-form-login-content">
+		<?php
+		do_action('webt_woocommerce_account_content_form_login');
+		?>
 	</div>
-	<?php //do_action( 'woocommerce_after_customer_login_form' ); ?>
+
+	<?php do_action('woocommerce_after_customer_login_form'); ?>
+
 </div>

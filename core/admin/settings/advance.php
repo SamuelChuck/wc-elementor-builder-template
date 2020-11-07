@@ -27,7 +27,8 @@ if (!defined('ABSPATH')) {
 
 				<!--Template Setup-->
 				<h2><?php esc_html_e('Template setup', 'webt') ?></h2>
-				<p>These Templates need to be set so that WooCommerce knows the layout to send. They should be unique and can be left unselected (or select "None") to disable the template(s).</p>
+				<p>These Templates need to be set so that WooCommerce knows the layout to send. They should be unique and can be left unselected (or select "None") to disable the template(s).
+				</p>
 				<table class="form-table">
 					<tbody>
 						<!--My Account-->
@@ -54,12 +55,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_myaccount_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_myaccount_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_myaccount_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_myaccount_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -87,12 +89,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($cart_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($cart_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($cart_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($cart_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -121,12 +124,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($cart_empty_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($cart_empty_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($cart_empty_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($cart_empty_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -154,12 +158,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($checkout_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($checkout_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($checkout_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($checkout_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -169,7 +174,8 @@ if (!defined('ABSPATH')) {
 
 				<!--Cart Page Setup-->
 				<h2><?php esc_html_e('Orders template', 'webt') ?></h2>
-				<p>Templates are appended to Order related page to handle design and specific actions during or after the order process.</p>
+				<p>Templates are appended to Order related page to handle design and specific actions during or after the order process.
+				</p>
 				<table class="form-table">
 					<tbody>
 
@@ -197,12 +203,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_account_orders_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_account_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_account_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_account_orders_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -230,12 +237,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_account_no_orders_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_account_no_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_account_no_orders_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_account_no_orders_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -263,12 +271,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_account_view_order_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_account_view_order_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_account_view_order_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_account_view_order_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -296,12 +305,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_account_downloads_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_account_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_account_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_account_downloads_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -329,12 +339,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_account_no_downloads_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_account_no_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_account_no_downloads_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_account_no_downloads_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -371,12 +382,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_order_pay_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_order_pay_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_order_pay_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_order_pay_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -404,13 +416,14 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_order_received_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_order_received_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_order_received_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_order_received_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
-								</p>
+
+								</div>
 							</td>
 						</tr>
 
@@ -438,12 +451,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_add_payment_method_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_add_payment_method_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_add_payment_method_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_add_payment_method_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -471,12 +485,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_checkout_login_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_checkout_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_checkout_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_checkout_login_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -513,12 +528,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_edit_account_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_edit_account_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_edit_account_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_edit_account_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -546,12 +562,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_addresses_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_addresses_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_addresses_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_addresses_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -579,12 +596,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_edit_address_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_edit_address_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_edit_address_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_edit_address_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 						<!--Payment Methods-->
@@ -611,12 +629,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_payment_methods_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_payment_methods_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -644,12 +663,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_no_payment_methods_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_no_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_no_payment_methods_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_no_payment_methods_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -677,12 +697,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_myaccount_login_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_myaccount_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_myaccount_login_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_myaccount_login_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -710,12 +731,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_myaccount_register_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_myaccount_register_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_myaccount_register_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_myaccount_register_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -743,12 +765,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_lost_password_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_lost_password_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_lost_password_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_lost_password_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -776,12 +799,13 @@ if (!defined('ABSPATH')) {
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_lost_password_reset_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_lost_password_reset_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_lost_password_reset_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_lost_password_reset_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 
@@ -803,18 +827,19 @@ if (!defined('ABSPATH')) {
 									'posts_per_page' => -1
 								));
 								echo '<select name="webt_lost_password_confirmation_template_id" id="webt_lost_password_confirmation_template_id" class="" data-placeholder="' . esc_attr__('Select a template&hellip;', 'webt') . '">';
-								echo '<option value = "" >' . esc_html__('-- None (Use theme layout) --', 'webt') . '</option>';
+								echo '<option value = "" >' . esc_html__('-- None (Use theme layout) --', 'webt') . ' </option>';
 								foreach ($lost_password_confirmation_tpls as $c_tpl) {
 									echo '<option value="' . $c_tpl->ID . '" ' . selected($webt_lost_password_confirmation_template_id, $c_tpl->ID, false) . '>' . $c_tpl->post_title . '</option>';
 								}
 								echo '</select>';
 								?>
-								<p class="description">
+								<div class="webt row-actions">
 									<?php
 									if (!empty($webt_lost_password_confirmation_template_id)) {
-										echo '<a href="' . esc_url($this->get_edit_url($webt_lost_password_confirmation_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>';
+										echo '<span class="edit_with_elementor"><a href="' . esc_url($this->get_edit_url($webt_lost_password_confirmation_template_id)) . '"> ' . esc_html__('Edit with Elementor', 'elementor') . '</a>  |  <span>';
+										echo '<span class="view"><a href="' . esc_url($this->get_preview_url($webt_lost_password_confirmation_template_id)) . '"> ' . esc_html__('Preview', 'elementor') . '</a></span>';
 									} ?>
-								</p>
+								</div>
 							</td>
 						</tr>
 

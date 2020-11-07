@@ -143,7 +143,7 @@ class WEBT_Admin_Init
 		 * Value must be same as input action value
 		 */
 		add_action('admin_action_webt_new_post', [$this, 'admin_action_new_post']);
-		add_action('admin_action_webt_advance_action', [$this, 'add_admin_action_options']);
+		add_action('admin_action_webt_advance_action', [$this, 'admin_action']);
 
 		add_action('current_screen', [$this, 'init_new_template']);
 		add_action('admin_init', [$this, 'add_backword_compactabality']);
@@ -503,30 +503,30 @@ class WEBT_Admin_Init
 	}
 
 	/**
-	 * add_admin_action_options
+	 * admin_action
 	 *
 	 * @return exit
 	 */
-	public function add_admin_action_options()
+	public function admin_action()
 	{
 		check_admin_referer('webt_nonce');
 		$current_url = $_GET['current_url'];
 
 		require(WEBT_CORE_PATH . 'admin/settings/action.php');
 
-		$this->update_woo_options($options);
+		$this->update_options($options);
 		wp_safe_redirect($current_url);
 
 		exit;
 	}
 
 	/**
-	 * update_woo_options
+	 * update_options
 	 *
 	 * @param  mixed $options
 	 * @return void
 	 */
-	public function update_woo_options($options = '')
+	public function update_options($options = '')
 	{
 
 		if (is_array($options)) {
@@ -660,24 +660,31 @@ class WEBT_Admin_Init
 		return $this->main_id;
 	}
 
-
 	/**
 	 * get_edit_url
 	 *
 	 * @return void
 	 */
-	public function get_edit_url()
+	public function get_edit_url($postID = '')
 	{
+		$post_id = !$postID ? $this->get_main_id() : $postID;
 		$url = add_query_arg(
 			[
-				'post' => $this->get_main_id(),
+				'post' => $post_id,
 				'action' => 'elementor',
 			],
-			admin_url( 'post.php' )
+			admin_url('post.php')
 		);
 
 		return $url;
+	}
 
+	public function get_preview_url($post_slug)
+	{
+		$post_slug = get_post_permalink($post_slug);
+		$url = $post_slug;
+
+		return $url;
 	}
 
 	/**

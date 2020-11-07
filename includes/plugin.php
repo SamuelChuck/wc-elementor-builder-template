@@ -108,7 +108,7 @@ class Plugin
      */
     public static function elementor_instance()
     {
-       return \Elementor\Plugin::$instance;
+        return \Elementor\Plugin::$instance;
     }
 
 
@@ -218,6 +218,7 @@ class Plugin
     {
         require_once(WEBT_CORE_PATH . 'functions/functions.php');
         if (is_admin()) {
+            // Require admin functions
             require_once(WEBT_CORE_PATH . 'admin/admin-init.php');
         }
         require(WEBT_CORE_PATH . '/common/main.php');
@@ -233,7 +234,10 @@ class Plugin
      */
     private function modules()
     {
-        require(WEBT_MODULES_PATH . 'library/module.php');
+        if (!is_admin()) {
+            //Shows Template type in frontend admin top bar.
+            include_once(WEBT_MODULES_PATH . 'library/module.php');
+        }
     }
 
     /**
