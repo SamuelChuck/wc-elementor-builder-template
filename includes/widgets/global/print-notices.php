@@ -84,7 +84,6 @@ class Widget_Custom_Notices extends Widget_Base
 			[
 				'label' => esc_html__('Custom Notice Type', 'webt'),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'solid',
 				'options' => [
 					'success'  => __('Success', 'webt'),
 					'error' => __('Error', 'webt'),

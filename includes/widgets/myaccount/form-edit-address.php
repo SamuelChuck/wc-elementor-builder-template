@@ -82,7 +82,7 @@ class Widget_MyAccount_Edit_Address_Form extends Widget_Base
 			array(
 				'name'      => 'header_typography',
 				'label'     => esc_html__('Typography', 'elementor'),
-				'selector'  => '{{WRAPPER}} .woocommerce-Address-title, {{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3',
+				'selector'  => '{{WRAPPER}} .woocommerce-Address-title, {{WRAPPER}} .webt-form-edit-address > form >  h3',
 			)
 		);
 		$this->add_control(
@@ -91,7 +91,7 @@ class Widget_MyAccount_Edit_Address_Form extends Widget_Base
 				'label' => esc_html__('Color', 'elementor'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3' => 'color: {{VALUE}}',
+					'{{WRAPPER}} .webt-form-edit-address > form >  h3' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -114,10 +114,8 @@ class Widget_MyAccount_Edit_Address_Form extends Widget_Base
 						'icon'  => 'fa fa-align-right',
 					],
 				],
-				'prefix_class' => '',
-				'default'      => '',
 				'selectors' => [
-					'{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3' => 'text-align: {{VALUE}}',
+					'{{WRAPPER}} .webt-form-edit-address > form >  h3' => 'text-align: {{VALUE}}',
 				],
 			]
 		);
@@ -127,7 +125,7 @@ class Widget_MyAccount_Edit_Address_Form extends Widget_Base
 			[
 				'name' => 'text_shadow',
 				'label' => __('Text Shadow', 'plugin-domain'),
-				'selector' => '{{WRAPPER}} .webt-form-edit-address > form > .woocommerce-address-fields > h3',
+				'selector' => '{{WRAPPER}} .webt-form-edit-address > form >  h3',
 			]
 		);
 

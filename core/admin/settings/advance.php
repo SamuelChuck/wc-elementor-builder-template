@@ -648,7 +648,7 @@ if (!defined('ABSPATH')) {
 							</th>
 							<td>
 								<?php
-								$webt_payment_no_methods_template_id = get_option('webt_no_payment_methods_template_id', '');
+								$webt_no_payment_methods_template_id = get_option('webt_no_payment_methods_template_id', '');
 								$no_payment_methods_tpls           = get_posts(array(
 									'post_type' => self::POST_TYPE,
 									'post_status' => 'publish,private',

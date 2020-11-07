@@ -72,6 +72,7 @@ if (!class_exists('Widgets_Registered')) {
                 /*Global*/
                 require_once(dirname(__FILE__) . '/global/custom-hook.php');
                 require_once(dirname(__FILE__) . '/global/print-notices.php');
+                require_once(dirname(__FILE__) . '/global/wc-get-template.php');
                 require_once(dirname(__FILE__) . '/global/taxonomy-listing.php');
 
                 /*Single Product*/
